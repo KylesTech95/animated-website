@@ -6,8 +6,8 @@
     
 }
 body{
-    width: 100%
-    overflow:hidden
+    width: 100%;
+    overflow:hidden;
     }
 @media sceeen (max-width: 390px){
     .nav-container{
