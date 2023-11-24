@@ -18,6 +18,9 @@ body{
         transition:1s ease;
         width: 100%;
         }
+        .nav-actual>ul>li{
+            padding:1rem
+        }
     .nav-left{
     left: -2000px;
     transition:.25s
