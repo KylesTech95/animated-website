@@ -22,6 +22,9 @@
         left: 0;
         transition:1s ease;
     }
+    span{
+        font-size: 20rem
+    }
 }
 /*Queried for mobile view*/
 @media screen and(max-width: 715px) {
