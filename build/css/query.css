@@ -6,7 +6,7 @@
     
 }
 /*Queried for mobile view*/
-@media screen and (max-width: 715px) {
+@media screen and (min-width: 390px)and(max-width: 715px) {
     .nav-container{
         position: absolute;
         top:0;
