@@ -19,7 +19,7 @@ body{
         width: 100%;
         }
         .nav-actual>ul>li{
-            padding:1rem
+            padding:0;
         }
     .nav-left{
     left: -2000px;
