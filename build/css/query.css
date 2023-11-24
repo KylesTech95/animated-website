@@ -5,6 +5,24 @@
     }
     
 }
+@media sceeen (max-width: 390px){
+    .nav-container{
+        position:absolute;
+        top:0;
+        left:0;
+        background:none;
+        transition:1s ease;
+        width: 100%;
+        }
+    .nav-left{
+    left: -2000px;
+    transition:.25s
+    }
+    .nav-normal{
+        left: 0;
+        transition:1s ease;
+    }
+}
 /*Queried for mobile view*/
 @media screen and(max-width: 715px) {
     .nav-container{
@@ -20,11 +38,10 @@
     .nav-normal{
         left: 0;
         transition: 1s ease;
-        position: relative;
     }
     .nav-actual>ul{
         flex-direction: column;
-        position: relative;
+        position:relative;
     }
     .nav-actual>ul>li{
         display:flex;
