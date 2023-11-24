@@ -1,0 +1,40 @@
+/*Queried for mobile view or Tablet view*/
+@media screen and (max-width: 1000px) {
+    .nav-actual>ul>li{
+        padding: 1.75rem 3rem;
+    }
+    
+}
+/*Queried for mobile view*/
+@media screen and (max-width: 715px) {
+    .nav-container{
+        position: absolute;
+        top:0;
+        background:none;
+        transition:1s ease;
+    }
+    .nav-left{
+        left: -2000px;
+        transition: .25s;
+    }
+    .nav-normal{
+        left: 0;
+        transition: 1s ease;
+        position: relative;
+    }
+    .nav-actual>ul{
+        flex-direction: column;
+        position: relative;
+    }
+    .nav-actual>ul>li{
+        display:flex;
+        justify-content: center;
+    }
+    .btn-press{
+        position: fixed;
+        top:1rem;
+        left: 1rem;
+        display: block;
+    }
+    
+}
