@@ -10,31 +10,31 @@
     <title>Document</title>
 </head>
 <body class="h-screen bg-purple-200 font-serif container">
+
     <!--Tailwind flex-box-->
-    <div class="gears-container gears-bg gears flex flex-row justify-center align-center absolute w-full pointer-events-none">
-        <div class="test mt-40">
-            <span class="hidden absolute material-symbols-outlined settings1 text-oversize animate-rotation m-0 text-gray-400">
+    <div class="gears-container gears-bg gears absolute w-screen z-0 pointer-events-none">
+        <div class="test mt-40 absolute left-20">
+            <span class="material-symbols-outlined settings1 pointer-events-none animate-rotation m-0 text-gray-400">
                 settings 
             </span>
         </div>
-        <div class="test">
-        <span class="hidden absolute material-symbols-outlined settings2 text-oversize animate-reverse m-0 text-gray-400">
+        <div class="test absolute right-20">
+        <span class="material-symbols-outlined settings2 pointer-events-none animate-reverse m-0 text-gray-400">
             settings
         </span>
         </div>  
     </div> 
 
-    <div class="nav-container container h-24 bg-gray-400 bg-opacity-75 fixed left-0 top-0 uppercase nav-left">
-        <nav id="nav" class="nav-actual">
-            <ul class=" leading-10 list-container flex justify-end">
-                <li class="list-item px-20 py-7 cursor-pointer duration-200 hover:bg-purple-50 hover:text-purple-600"><a href="index.html" class="list-link">About Me</a></li>
-                <li class="list-item px-20 py-7 cursor-pointer duration-200 hover:bg-purple-50 hover:text-purple-600"><a href="index.html" class="list-link">Gallery</a></li>
-                <li class="list-item px-20 py-7 cursor-pointer duration-200 hover:bg-purple-50 hover:text-purple-600"><a href="index.html" class="list-link">Languages</a></li>
-                <li class="list-item px-20 py-7 cursor-pointer duration-200 hover:bg-purple-50 hover:text-purple-600"><a href="index.html" class="list-link">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-    <button onclick="navFn()" class="btn-press hidden px-10 py-4 bg-gray-400 hover:text-white duration-200">Press Me</button>
+    <nav id="nav" class="w-screen h-20 bg-gray-400 bg-opacity-75 z-10 nav-left">
+        <ul class="list-container flex justify-end items-center leading-7 h-full">
+            <li class="list-item px-14 py-6 duration-300 hover:text-purple-600 hover:bg-white cursor-pointer"><a href="" class="list-link">Home</a></li>
+            <li class="list-item px-14 py-6 duration-300 hover:text-purple-600 hover:bg-white cursor-pointer"><a href="" class="list-link">About</a></li>
+            <li class="list-item px-14 py-6 duration-300 hover:text-purple-600 hover:bg-white cursor-pointer"><a href="" class="list-link">Gallery</a></li>
+            <li class="list-item px-14 py-6 duration-300 hover:text-purple-600 hover:bg-white cursor-pointer"><a href="" class="list-link">Social</a></li>
+        </ul>
+    </nav>
+   
+    <button onclick="navFn()" class="btn-press  px-10 py-4 bg-gray-400 hover:text-white duration-200 hidden">Press Me</button>
 </body>
 <script src="main.js"></script>
 </html>

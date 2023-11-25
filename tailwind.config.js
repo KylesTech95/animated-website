@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     /*Add custom styles below*/
     fontSize: {
-      'oversize': '35rem'
+      'oversize': '50rem',
+      'medium-size':'35rem',
+      'small-size':'15rem',
     },
     /*Add custom styles above*/
     extend: {
