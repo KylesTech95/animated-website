@@ -28,22 +28,11 @@ function navFn(){
       nav_container.classList.toggle('nav-center')
    }
 }
-// window.addEventListener('resize',(e)=>{
-//    gears.forEach(gear =>{
-//    if(gear.classList.contains('text-oversize')){
-//       if(body.clientWidth <= 715){
-//          gear.classList.remove('text-oversize')
-//          gear.classList.add('text-medium-size')
-//       }
-//       else if(body.clientWidth <= 396){
-//          gear.classList.remove('text-medium-size')
-//          gear.classList.add('text-small-size')
-//       }
-//       else{
-//          gear.classList.remove('text-small-size')
-//          gear.classList.add('text-oversize')
-//       }
-      
-//    }
-//    })
-// })
+window.addEventListener('resize',(e)=>{
+   if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
+      nav_container.classList.remove('nav-center')
+   }
+   else{
+      return null
+   }
+})
