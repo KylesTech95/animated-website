@@ -25,8 +25,11 @@ body{
     }
 }
 @media screen and (max-width: 725px){
+    .gears-container{
+        top:8rem;
+    }
     .material-symbols-outlined{
-        font-size: 25rem 
+        font-size: 25rem;
     }
     #nav{
         background:none;
