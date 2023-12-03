@@ -23,6 +23,7 @@ else{
    })
 }
 })
+
 function navFn(){
       let animation = document.getElementById('btn-pressID')
    if(nav_container.classList.contains('nav-left')){
@@ -30,17 +31,30 @@ function navFn(){
          animation.style.animation="none";
          animation.style.left=0;
    }
+   if(!/nav-center/g.test(nav_container.classList.value)){{
+      animation.style="animation:peek 1s ease-in-out infinite alternate";
+      animation.style.left=`-125px`;
+   }}
    
    
 }
 window.addEventListener('resize',(e)=>{
-   if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
+   let animation = document.getElementById('btn-pressID')
+   if(e.target.innerWidth>725 && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
+      animation.style="animation:peek 1s ease-in-out infinite alternate";
+      animation.style.left=`-125px`;
    }
 })
 
 window.addEventListener('click',(e)=>{
+   let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
+      if(body.clientWidth <= 725){
+         animation.style="animation:peek 1s ease-in-out infinite alternate";
+         animation.style.left=`-125px`;
+      }
+
    }
 })
