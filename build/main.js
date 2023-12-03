@@ -24,15 +24,23 @@ else{
 }
 })
 function navFn(){
+      let animation = document.getElementById('btn-pressID')
    if(nav_container.classList.contains('nav-left')){
-      nav_container.classList.toggle('nav-center')
+         nav_container.classList.toggle('nav-center')
+         animation.style.animation="none";
+         animation.style.left=0;
    }
+   
+   
 }
 window.addEventListener('resize',(e)=>{
    if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
    }
-   else{
-      return null
+})
+
+window.addEventListener('click',(e)=>{
+   if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
+      nav_container.classList.remove('nav-center')
    }
 })

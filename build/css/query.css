@@ -2,25 +2,31 @@ body{
     overflow-y: hidden;
     overflow-y:hidden;
 }
-.material-symbols-outlined{
+.settings1,
+.settings2{
     font-size: 40rem;
     transition:.3s;
 }
-#nav>ul{
-    font-size: 22px;
+.html,
+.css,
+.js{
+    font-size: 4rem;
 }
 @media screen and (max-width: 1375px){
-    .material-symbols-outlined{
+    .settings1,
+    .settings2{
         font-size: 35rem 
     }
 }
 @media screen and (max-width: 1075px){
-    .material-symbols-outlined{
+    .settings1,
+    .settings2{
         font-size: 30rem 
     }
 }
 @media screen and (max-width: 875px){
-    .material-symbols-outlined{
+    .settings1,
+    .settings2{
         font-size: 25rem 
     }
 }
@@ -28,14 +34,19 @@ body{
     .gears-container{
         top:8rem;
     }
-    .material-symbols-outlined{
+    .settings1,
+    .settings2{
         font-size: 25rem;
     }
     #nav{
         background:none;
         height: 65vh;
         position: fixed;
-        margin: 3.5rem 0 0 0 
+        margin: 3.5rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .nav-left{
         left:-2000px;
@@ -48,17 +59,32 @@ body{
     #nav>ul{
         flex-direction: column;
         justify-items: center;
+        width: 50%;
     }
     #nav>ul>li{
-        padding: 1.5rem 0;
+        padding: 1.5rem 8rem;
     }
     .btn-press{
         display: block;
+        position: fixed;
+        top: 0;
+        left: -125px;
+        animation: peek 1s ease-in-out infinite alternate;
     }
+    @keyframes peek {
+    0%{
+        transform: translate(0,0)
+    }
+    100%{
+        transform: translate(90px,0)
+    }
+}
    
 }
+
 @media screen and (max-width: 575px){
-    .material-symbols-outlined{
+    .settings1,
+    .settings2{
         font-size: 15rem 
     }
 }
