@@ -28,7 +28,6 @@ else{
    })
 }
 })
-
 function navFn(){
       let animation = document.getElementById('btn-pressID')
    if(nav_container.classList.contains('nav-left')){
@@ -44,6 +43,17 @@ function navFn(){
    
 }
 window.addEventListener('resize',(e)=>{
+   if(body.clientWidth < 750){
+      let preview_width = body.clientWidth
+      let preview_height = body.clientWidth
+      preview_arr.forEach((item,i)=>{
+         let mod_idx = i%3
+      if(i < 4){item.style=`left:${mod_idx * (preview_width/Math.sqrt(preview_arr.length))+50}px;top:0`}      
+      if(i > 6){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;right:50px`}      
+      if(i > 3 && i < 7){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;left:50px`}      
+   
+   })
+   }
    let animation = document.getElementById('btn-pressID')
    if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
@@ -56,7 +66,6 @@ window.addEventListener('resize',(e)=>{
       preview.classList.add('pointer-events-none')
    }
 })
-
 window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
@@ -103,14 +112,29 @@ window.addEventListener('mousemove', e =>{
 
 preview_arr.forEach((item,i)=>{
    item.classList.add('item' + (i+1))
+   if(body.clientWidth > 750){
    item.addEventListener('mouseover', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
          e.target.style=`transition:.3s ease;transform:scale(1.25); background:red`
       }
+      
    })
    item.addEventListener('mouseout', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
-         e.target.style=`transition:.3s ease;width: 100%; height: 100%;transform:scale(1); position:none;`
+         e.target.style=`transition:.3s ease; height: 100%;transform:scale(1); position:none;`
       }
    })
+}
 })
+
+if(body.clientWidth < 750){
+   let preview_width = body.clientWidth
+   let preview_height = body.clientWidth
+   preview_arr.forEach((item,i)=>{
+      let mod_idx = i%3
+   if(i < 4){item.style=`left:${mod_idx * (preview_width/Math.sqrt(preview_arr.length))+50}px;top:0`}      
+   if(i > 6){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;right:50px`}      
+   if(i > 3 && i < 7){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;left:50px`}      
+
+})
+}
