@@ -3,9 +3,6 @@
     overflow-y:hidden;
 } */
 
-.test-video{
-    transform:scale(1.05)
-}
 .settings1,
 .settings2{
     font-size: 40rem;
@@ -17,9 +14,7 @@
 .js{
     font-size: 4rem;
 }
-.preview{
-    top: 6.75rem;
-}
+
 .preview-container{
     display: grid;
     width: 100%;

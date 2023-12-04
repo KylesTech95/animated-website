@@ -10,7 +10,8 @@ let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
 let preview_ul = document.querySelector('.preview-container')
 let mymouse = {x:undefined,y:undefined};
-let preview_src = document.querySelectorAll('video')
+let preview_src = document.querySelectorAll('video>source')
+
 
 
 //backround appear/disappear mouse event
@@ -36,16 +37,27 @@ let side = {
 let html_left = document.querySelector('.li1').getBoundingClientRect().x
 let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
 mymouse = {x:e.pageX,y:e.pageY}
+
 if(body.clientWidth > 600){
    if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.y < 105 && (mymouse.x < html_left || mouse.x > js_right)))){
       preview.classList.remove('opacity-1')
       preview.classList.add('opacity-0')
       preview.classList.add('pointer-events-none')
+
+      preview_arr.forEach((item,i)=>{
+      let video = item.children[0].children[0]
+      console.log(video)
+      if(video.played.length>=0){
+         video.played.length = 0;
+         video.pause();
+      }
+   })
    }
    if(preview.classList.contains('opacity-1')){
       preview.classList.remove('pointer-events-none')
    }
 }
+
 else{
    if(preview.classList.contains('opacity-1') && (mymouse.x < side.left || mymouse.x > side.right)){
       preview.classList.remove('opacity-1')
@@ -79,8 +91,7 @@ function navFn(){
                preview.classList.remove('opacity-1')
                preview.classList.add('pointer-events-none')
             },250)
-      
-   }
+         }
       }
    }
    
@@ -117,20 +128,9 @@ window.addEventListener('click',(e)=>{
 })
 
 
-   function html_preview(){
+   function appear_preview(){
       preview.classList.remove('opacity-0')
       preview.classList.add('opacity-1')
-      
-   }
-   function css_preview(){
-      preview.classList.remove('opacity-0')
-      preview.classList.add('opacity-1')
-      
-   }
-   function js_preview(){
-      preview.classList.remove('opacity-0')
-      preview.classList.add('opacity-1')
-      
    }
 
 if(body.clientWidth < 600){
@@ -155,6 +155,23 @@ if(body.clientWidth < 600){
 
 })
 }
+else{
+   preview_arr.forEach((item,i)=>{
+   item.classList.add(`item${i+1}`)  
+   item.addEventListener('mouseover',e=>{
+      let video = e.currentTarget.children[0].children[0]
+      if(video.played.length===0){ //play video if it has not started
+         video.muted=true
+         video.play();
+      }
+      if(video.paused){ //pickup video from where you left off
+         video.muted=true
+         video.play();
+      }
+    })  
+
+})
+}
 
 
 //render data into html
@@ -164,7 +181,7 @@ let data = JSON.parse(d.target.responseText).html_data
 //forEach loop on preview-tiles
 preview_src.forEach((src,i)=>{
    //target <a></a> tag (parent)
-   let link = src.parentElement
+   let link = src.parentElement.parentElement
    link.href=data[0].link; //testing
    link.target=data[0].target//testing
 })
@@ -172,10 +189,10 @@ preview_src.forEach((src,i)=>{
 
 //upload json
 let xml = new XMLHttpRequest();
-let url = './mydata/html.json';
+let url='./mydata/html.json';
 let method = 'GET';
 //open xml
-xml.open(method,url,true)
+xml.open(method,url,false)//false for async operations
 
 //xml.onload
 xml.onload=(d)=>{
