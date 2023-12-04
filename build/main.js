@@ -3,12 +3,16 @@ let body = document.querySelector('body')
 let half_window = body.clientWidth/2
 let half_height = body.clientHeight/2
 let gears = document.querySelectorAll('span')
-let btn = document.querySelector('.btn-press')
 let nav_container = document.querySelector('#nav')
+//desktop preview version
 let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
-let preview_ul = document.querySelector('.preview-container')
+//mobile preview version
+let preview2 = document.getElementById('preview2')
+let preview_daddy2 = document.querySelector('.preview-container-daddy2')
+let preview_arr2 = document.querySelectorAll('.preview-item2')
+
 let mymouse = {x:undefined,y:undefined};
 let preview_src = document.querySelectorAll('video>source')
 
@@ -33,6 +37,10 @@ else{
 let side = {
    left:preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
+}
+let side_mobile = {
+   left:preview_daddy2.getBoundingClientRect().x,
+   right: preview_daddy2.getBoundingClientRect().x + preview_daddy2.getBoundingClientRect().width
 }
 let html_left = document.querySelector('.li1').getBoundingClientRect().x
 let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
@@ -59,13 +67,21 @@ if(body.clientWidth > 600){
 }
 
 else{
-   if(preview.classList.contains('opacity-1') && (mymouse.x < side.left || mymouse.x > side.right)){
+   if(preview.classList.contains('opacity-1') && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
       preview.classList.remove('opacity-1')
       preview.classList.add('opacity-0')
       preview.classList.add('pointer-events-none')
    }
-   if(preview.classList.contains('opacity-1')){
-      preview.classList.remove('pointer-events-none')
+   preview_arr2.forEach((item,i)=>{
+      let video = item.children[0].children[0]
+      console.log(video)
+      if(video.played.length>=0){
+         video.played.length = 0;
+         video.pause();
+      }
+   })
+   if(preview2.classList.contains('opacity-1')){
+      preview2.classList.remove('pointer-events-none')
    }
 }
 
@@ -84,12 +100,12 @@ function navFn(){
       animation.style.left=`-125px`;
    }}
    if(body.clientWidth < 600){
-      if(preview.classList.contains('opacity-1')){
+      if(preview2.classList.contains('opacity-1')){
          {
             setTimeout(()=>{
-               preview.classList.add('opacity-0')
-               preview.classList.remove('opacity-1')
-               preview.classList.add('pointer-events-none')
+               preview2.classList.add('opacity-0')
+               preview2.classList.remove('opacity-1')
+               preview2.classList.add('pointer-events-none')
             },250)
          }
       }
@@ -109,18 +125,21 @@ window.addEventListener('resize',(e)=>{
       preview.classList.add('opacity-0')
       preview.classList.remove('opacity-1')
       preview.classList.add('pointer-events-none')
+      preview2.classList.add('opacity-0')
+      preview2.classList.remove('opacity-1')
+      preview.classList.add('pointer-events-none')
    }
 })
 window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
-      if(body.clientWidth <= 725){
+      if(body.clientWidth <= 600){
          animation.style="animation:peek 1s ease-in-out infinite alternate";
          animation.style.left=`-125px`;
-         preview.classList.remove('opacity-1')
-         preview.classList.add('opacity-0')
-         preview.classList.add('pointer-events-none')
+         preview2.classList.remove('opacity-1')
+         preview2.classList.add('opacity-0')
+         preview2.classList.add('pointer-events-none')
       }
       
 
@@ -129,14 +148,35 @@ window.addEventListener('click',(e)=>{
 
 
    function appear_preview(){
-      preview.classList.remove('opacity-0')
-      preview.classList.add('opacity-1')
+      if(body.clientWidth <= 600){
+      preview2.classList.remove('opacity-0')
+      preview2.classList.add('opacity-1')
+      }
+      else{
+         preview.classList.remove('opacity-0')
+         preview.classList.add('opacity-1')
+      }
+      
    }
 
 if(body.clientWidth < 600){
+   preview_arr2.forEach((item,i)=>{
+   item.addEventListener('mouseover',e=>{
+      let video = e.currentTarget.children[0].children[0]
+      if(video.played.length===0){ //play video if it has not started
+         video.muted=true
+         video.play();
+      }
+      if(video.paused){ //pickup video from where you left off
+         video.muted=true
+         video.play();
+      }
+    })  
+
+})
    let preview_width = body.clientWidth
    let preview_height = body.clientWidth
-   preview_arr.forEach((item,i)=>{
+   preview_arr2.forEach((item,i)=>{
       let mod_idx = i%3
    if(i > 2 && i < 6){
       if(i==3){
@@ -157,7 +197,6 @@ if(body.clientWidth < 600){
 }
 else{
    preview_arr.forEach((item,i)=>{
-   item.classList.add(`item${i+1}`)  
    item.addEventListener('mouseover',e=>{
       let video = e.currentTarget.children[0].children[0]
       if(video.played.length===0){ //play video if it has not started
@@ -172,6 +211,7 @@ else{
 
 })
 }
+
 
 
 //render data into html
