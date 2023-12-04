@@ -636,20 +636,12 @@ video {
   display: none;
 }
 
-.h-4\/5 {
-  height: 80%;
-}
-
 .h-full {
   height: 100%;
 }
 
 .h-screen {
   height: 100vh;
-}
-
-.w-4\/5 {
-  width: 80%;
 }
 
 .w-full {
@@ -720,17 +712,12 @@ video {
   gap: 3.5rem;
 }
 
-.border-4 {
-  border-width: 4px;
-}
-
 .border-2 {
   border-width: 2px;
 }
 
-.border-green-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(22 163 74 / var(--tw-border-opacity));
+.border-4 {
+  border-width: 4px;
 }
 
 .border-red-500 {

@@ -8,6 +8,7 @@ let nav_container = document.querySelector('#nav')
 let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
+let preview_ul = document.querySelector('.preview-container')
 let mymouse = {x:undefined,y:undefined};
 
 
@@ -43,17 +44,7 @@ function navFn(){
    
 }
 window.addEventListener('resize',(e)=>{
-   if(body.clientWidth < 750){
-      let preview_width = body.clientWidth
-      let preview_height = body.clientWidth
-      preview_arr.forEach((item,i)=>{
-         let mod_idx = i%3
-      if(i < 4){item.style=`left:${mod_idx * (preview_width/Math.sqrt(preview_arr.length))+50}px;top:0`}      
-      if(i > 6){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;right:50px`}      
-      if(i > 3 && i < 7){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;left:50px`}      
-   
-   })
-   }
+
    let animation = document.getElementById('btn-pressID')
    if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
@@ -73,7 +64,11 @@ window.addEventListener('click',(e)=>{
       if(body.clientWidth <= 725){
          animation.style="animation:peek 1s ease-in-out infinite alternate";
          animation.style.left=`-125px`;
+         preview.classList.remove('opacity-1')
+         preview.classList.add('opacity-0')
+         preview.classList.add('pointer-events-none')
       }
+      
 
    }
 })
@@ -109,19 +104,17 @@ window.addEventListener('mousemove', e =>{
       preview.classList.add('opacity-1')
       
    }
-
 preview_arr.forEach((item,i)=>{
    item.classList.add('item' + (i+1))
    if(body.clientWidth > 750){
    item.addEventListener('mouseover', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
          e.target.style=`transition:.3s ease;transform:scale(1.25); background:red`
-      }
-      
+      }  
    })
    item.addEventListener('mouseout', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
-         e.target.style=`transition:.3s ease; height: 100%;transform:scale(1); position:none;`
+         e.target.style=`transition:.3s ease; height: 100%;transform:scale(1); position:none;`;
       }
    })
 }
@@ -132,9 +125,9 @@ if(body.clientWidth < 750){
    let preview_height = body.clientWidth
    preview_arr.forEach((item,i)=>{
       let mod_idx = i%3
-   if(i < 4){item.style=`left:${mod_idx * (preview_width/Math.sqrt(preview_arr.length))+50}px;top:0`}      
-   if(i > 6){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;right:50px`}      
-   if(i > 3 && i < 7){item.style=`top:${mod_idx * (preview_height/Math.sqrt(preview_arr.length))+125}px;left:50px`}      
+        
+   if(i >= 6){item.style=`top:${(mod_idx * (preview_height/5))+125}px;right:25px`}      
+   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/5))+125}px;left:25px`}      
 
 })
 }
