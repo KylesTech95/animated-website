@@ -40,18 +40,30 @@ function navFn(){
       animation.style="animation:peek 1s ease-in-out infinite alternate";
       animation.style.left=`-125px`;
    }}
+   if(body.clientWidth < 600){
+      if(preview.classList.contains('opacity-1')){
+         {
+            setTimeout(()=>{
+               preview.classList.add('opacity-0')
+               preview.classList.remove('opacity-1')
+               preview.classList.add('pointer-events-none')
+            },250)
+      
+   }
+      }
+   }
    
    
 }
 window.addEventListener('resize',(e)=>{
 
    let animation = document.getElementById('btn-pressID')
-   if(e.target.innerWidth>750 && nav_container.classList.contains('nav-center')){
+   if(e.target.innerWidth > 600 && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
       animation.style="animation:peek 1s ease-in-out infinite alternate";
       animation.style.left=`-125px`;
    }
-   if(e.target.innerWidth < 750){
+   if(e.target.innerWidth < 600){
       preview.classList.add('opacity-0')
       preview.classList.remove('opacity-1')
       preview.classList.add('pointer-events-none')
@@ -106,7 +118,7 @@ window.addEventListener('mousemove', e =>{
    }
 preview_arr.forEach((item,i)=>{
    item.classList.add('item' + (i+1))
-   if(body.clientWidth > 750){
+   if(body.clientWidth > 600){
    item.addEventListener('mouseover', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
          e.target.style=`transition:.3s ease;transform:scale(1.25); background:red`
@@ -114,20 +126,31 @@ preview_arr.forEach((item,i)=>{
    })
    item.addEventListener('mouseout', e =>{
       if(e.target.classList.contains(`item${i+1}`)){
-         e.target.style=`transition:.3s ease; height: 100%;transform:scale(1); position:none;`;
+         e.target.style=`transition:.3s ease;;transform:scale(1);`;
       }
    })
 }
 })
 
-if(body.clientWidth < 750){
+if(body.clientWidth < 600){
    let preview_width = body.clientWidth
    let preview_height = body.clientWidth
    preview_arr.forEach((item,i)=>{
       let mod_idx = i%3
-        
-   if(i >= 6){item.style=`top:${(mod_idx * (preview_height/5))+125}px;right:25px`}      
-   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/5))+125}px;left:25px`}      
+   if(i > 2 && i < 6){
+      if(i==3){
+         item.style=`top:75px;left:25px`
+      }
+      if(i===4){
+         item.style=`left:${preview_width < 500 ? (preview_width/2.75):(preview_width/2.35)}px;top:75px;`
+         
+      }
+      if(i===5){
+         item.style=`top:75px;right:25px`
+      }
+   }
+   if(i >= 6){item.style=`top:${(mod_idx * (preview_height/4))+225}px;right:25px`}      
+   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/4))+225}px;left:25px`}      
 
 })
 }

@@ -580,10 +580,6 @@ video {
   position: absolute;
 }
 
-.relative {
-  position: relative;
-}
-
 .left-0 {
   left: 0px;
 }
@@ -642,6 +638,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.w-4\/5 {
+  width: 80%;
 }
 
 .w-full {
@@ -710,10 +710,6 @@ video {
 
 .gap-14 {
   gap: 3.5rem;
-}
-
-.border-2 {
-  border-width: 2px;
 }
 
 .border-4 {
