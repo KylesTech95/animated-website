@@ -28,6 +28,22 @@ else{
    x.style = `opacity:${quotient}`
    })
 }
+let side = {
+   left:preview_daddy.getBoundingClientRect().x,
+   right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
+}
+let html_left = document.querySelector('.li1').getBoundingClientRect().x
+let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
+mymouse = {x:e.pageX,y:e.pageY}
+// console.log([mymouse.x,mymouse.y])
+if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.x < html_left || mouse.x > js_right))){
+   preview.classList.remove('opacity-1')
+   preview.classList.add('opacity-0')
+   preview.classList.add('pointer-events-none')
+}
+if(preview.classList.contains('opacity-1')){
+   preview.classList.remove('pointer-events-none')
+}
 })
 function navFn(){
       let animation = document.getElementById('btn-pressID')
@@ -84,22 +100,7 @@ window.addEventListener('click',(e)=>{
 
    }
 })
-window.addEventListener('mousemove', e =>{
-   let side = {
-      left:preview_daddy.getBoundingClientRect().x,
-      right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
-   }
-   mymouse = {x:e.pageX,y:e.pageY}
-   // console.log([mymouse.x,mymouse.y])
-   if(preview.classList.contains('opacity-1') && (mymouse.x < side.left || mymouse.x > side.right)){
-      preview.classList.remove('opacity-1')
-      preview.classList.add('opacity-0')
-      preview.classList.add('pointer-events-none')
-   }
-   if(preview.classList.contains('opacity-1')){
-      preview.classList.remove('pointer-events-none')
-   }
-})
+
 
    function html_preview(){
       preview.classList.remove('opacity-0')

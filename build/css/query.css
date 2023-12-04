@@ -6,6 +6,7 @@
 .settings2{
     font-size: 40rem;
     transition:.3s;
+    z-index:0;
 }
 .html,
 .css,
@@ -25,7 +26,9 @@
     transition:.3s;
 }
 .preview-item{
-    transition: .3s;
+    transition:.3s;
+    z-index:98;
+    opacity:.9;
 }
 @media screen and (max-width: 1375px){
     .settings1,
