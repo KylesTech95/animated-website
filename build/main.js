@@ -146,7 +146,7 @@ if(body.clientWidth < 600){
          
       }
       if(i===5){
-         item.style=`top:75px;right:25px`
+         item.style=`top:75px;right:25px` 
       }
    }
    if(i >= 6){item.style=`top:${(mod_idx * (preview_height/3))+225}px;right:25px`}      
