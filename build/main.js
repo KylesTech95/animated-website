@@ -54,7 +54,6 @@ if(body.clientWidth > 600){
 
       preview_arr.forEach((item,i)=>{
       let video = item.children[0].children[0]
-      console.log(video)
       if(video.played.length>=0){
          video.played.length = 0;
          video.pause();
@@ -67,14 +66,13 @@ if(body.clientWidth > 600){
 }
 
 else{
-   if(preview.classList.contains('opacity-1') && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
-      preview.classList.remove('opacity-1')
-      preview.classList.add('opacity-0')
-      preview.classList.add('pointer-events-none')
+   if(preview2.classList.contains('opacity-1') && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
+      preview2.classList.remove('opacity-1')
+      preview2.classList.add('opacity-0')
+      preview2.classList.add('pointer-events-none')
    }
    preview_arr2.forEach((item,i)=>{
       let video = item.children[0].children[0]
-      console.log(video)
       if(video.played.length>=0){
          video.played.length = 0;
          video.pause();
@@ -113,6 +111,10 @@ function navFn(){
    
    
 }
+
+
+
+
 window.addEventListener('resize',(e)=>{
 
    let animation = document.getElementById('btn-pressID')
@@ -127,16 +129,15 @@ window.addEventListener('resize',(e)=>{
       preview.classList.add('pointer-events-none')
       preview2.classList.add('opacity-0')
       preview2.classList.remove('opacity-1')
-      preview.classList.add('pointer-events-none')
+      preview2.classList.add('pointer-events-none')
    }
 })
 window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
-      if(body.clientWidth <= 600){
-         animation.style="animation:peek 1s ease-in-out infinite alternate";
-         animation.style.left=`-125px`;
+      if(body.clientWidth < 600){
+         animation.style="animation:peek 1s ease-in-out infinite alternate;left:-125px";
          preview2.classList.remove('opacity-1')
          preview2.classList.add('opacity-0')
          preview2.classList.add('pointer-events-none')
@@ -148,7 +149,7 @@ window.addEventListener('click',(e)=>{
 
 
    function appear_preview(){
-      if(body.clientWidth <= 600){
+      if(body.clientWidth < 600){
       preview2.classList.remove('opacity-0')
       preview2.classList.add('opacity-1')
       }
@@ -158,32 +159,29 @@ window.addEventListener('click',(e)=>{
       }
       
    }
-
 if(body.clientWidth < 600){
    preview_arr2.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
       let video = e.currentTarget.children[0].children[0]
-      if(video.played.length===0){ //play video if it has not started
-         video.muted=true
-         video.play();
-      }
+      console.log(video)
+      // if(video.played.length===0){ //play video if it has not started
+      //    video.muted=true
+      //    video.play();
+      // }
       if(video.paused){ //pickup video from where you left off
          video.muted=true
          video.play();
       }
-    })  
-
-})
-   let preview_width = body.clientWidth
-   let preview_height = body.clientWidth
-   preview_arr2.forEach((item,i)=>{
+    }) 
+    let preview_width = body.clientWidth
+      let preview_height = body.clientWidth
       let mod_idx = i%3
    if(i > 2 && i < 6){
       if(i==3){
          item.style=`top:75px;left:25px`
       }
       if(i===4){
-         item.style=`left:${preview_width < 500 ? (preview_width/2.75):(preview_width/2.35)}px;top:75px;`
+         item.style=`left:${preview_width < 600 ? (preview_width/2.75):(preview_width/2.35)}px;top:75px;`
          
       }
       if(i===5){
@@ -191,7 +189,7 @@ if(body.clientWidth < 600){
       }
    }
    if(i >= 6){item.style=`top:${(mod_idx * (preview_height/3))+225}px;right:25px`}      
-   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/3))+225}px;left:25px`}      
+   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/3))+225}px;left:25px`} 
 
 })
 }
@@ -208,35 +206,34 @@ else{
          video.play();
       }
     })  
-
 })
 }
 
 
 
-//render data into html
-function render(d){
-let data = JSON.parse(d.target.responseText).html_data
+// //render data into html
+// function render(d){
+// let data = JSON.parse(d.target.responseText).html_data
 
-//forEach loop on preview-tiles
-preview_src.forEach((src,i)=>{
-   //target <a></a> tag (parent)
-   let link = src.parentElement.parentElement
-   link.href=data[0].link; //testing
-   link.target=data[0].target//testing
-})
-}
+// //forEach loop on preview-tiles
+// preview_src.forEach((src,i)=>{
+//    //target <a></a> tag (parent)
+//    let link = src.parentElement.parentElement
+//    link.href=data[0].link; //testing
+//    link.target=data[0].target//testing
+// })
+// }
 
-//upload json
-let xml = new XMLHttpRequest();
-let url='./mydata/html.json';
-let method = 'GET';
-//open xml
-xml.open(method,url,false)//false for async operations
+// //upload json
+// let xml = new XMLHttpRequest();
+// let url='./mydata/html.json';
+// let method = 'GET';
+// //open xml
+// xml.open(method,url,false)//false for async operations
 
-//xml.onload
-xml.onload=(d)=>{
-   JSON.parse(d.target.response)
-   render(d)
-}
-xml.send();
+// //xml.onload
+// xml.onload=(d)=>{
+//    JSON.parse(d.target.response)
+//    render(d)
+// }
+// xml.send();
