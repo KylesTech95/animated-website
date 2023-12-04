@@ -1,0 +1,22 @@
+{
+    "_comment": "Objects that represent HTML content",
+    "html_data":
+    [
+        {
+            "id": 1,
+            "caption": "Interavtive Navigation Bar",
+            "media":"./media/int_nav.webm",
+            "link":"https://kylestech95.github.io/navigation-bar-interactive/",
+            "target":"_blank"
+        },
+        {
+            "id": 2,
+            "caption": "Interavtive Navigation Bar",
+            "media":"./media/int_nav.webm",
+            "link":"https://kylestech95.github.io/navigation-bar-interactive/",
+            "target":"_blank"
+        }
+        
+       
+]
+}

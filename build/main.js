@@ -10,6 +10,7 @@ let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
 let preview_ul = document.querySelector('.preview-container')
 let mymouse = {x:undefined,y:undefined};
+let preview_src = document.querySelectorAll('video')
 
 
 //backround appear/disappear mouse event
@@ -154,3 +155,31 @@ if(body.clientWidth < 600){
 
 })
 }
+
+
+//render data into html
+function render(d){
+let data = JSON.parse(d.target.responseText).html_data
+
+//forEach loop on preview-tiles
+preview_src.forEach((src,i)=>{
+   //target <a></a> tag (parent)
+   let link = src.parentElement
+   link.href=data[0].link; //testing
+   link.target=data[0].target//testing
+})
+}
+
+//upload json
+let xml = new XMLHttpRequest();
+let url = './mydata/html.json';
+let method = 'GET';
+//open xml
+xml.open(method,url,true)
+
+//xml.onload
+xml.onload=(d)=>{
+   JSON.parse(d.target.response)
+   render(d)
+}
+xml.send();

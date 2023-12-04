@@ -2,6 +2,10 @@
     overflow-x: hidden;
     overflow-y:hidden;
 } */
+
+.test-video{
+    transform:scale(1.05)
+}
 .settings1,
 .settings2{
     font-size: 40rem;
@@ -33,7 +37,6 @@
 .preview-item:hover{
     transition:.3s;
     opacity:.9;
-    background:red;
     transform:scale(1.10)
 }
 @media screen and (max-width: 1375px){
