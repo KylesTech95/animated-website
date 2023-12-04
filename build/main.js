@@ -36,7 +36,7 @@ let html_left = document.querySelector('.li1').getBoundingClientRect().x
 let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
 mymouse = {x:e.pageX,y:e.pageY}
 // console.log([mymouse.x,mymouse.y])
-if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.x < html_left || mouse.x > js_right))){
+if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.y < 105&&(mymouse.x < html_left || mouse.x > js_right)))){
    preview.classList.remove('opacity-1')
    preview.classList.add('opacity-0')
    preview.classList.add('pointer-events-none')
