@@ -34,7 +34,7 @@
     transition:.3s;
     opacity:.9;
     background:red;
-    transform:scale(1.25)
+    transform:scale(1.10)
 }
 @media screen and (max-width: 1375px){
     .settings1,
