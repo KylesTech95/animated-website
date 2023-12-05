@@ -2,7 +2,9 @@
     overflow-x: hidden;
     overflow-y:hidden;
 } */
-
+button{
+    z-index:999
+}
 .settings1,
 .settings2{
     font-size: 40rem;
@@ -133,12 +135,12 @@ height: 75px;
 .preview-item2:nth-child(9){
 position: absolute;
 width: 150px;
-height: 100px;
+height: 75px;
 }
 .preview-item2{
     transition: .3s;
     transform:scale(1);
-    z-index:999;
+    z-index:995;
     box-shadow: 0 0 12px .5px #333;
 }
 .preview-item2:hover{

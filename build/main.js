@@ -18,6 +18,7 @@ let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 
 
 
+
 //backround appear/disappear mouse event
 window.addEventListener('mousemove',e=>{
     mouse = {x:e.pageX,y:e.pageY}
@@ -109,17 +110,39 @@ function navFn(){
 window.addEventListener('resize',(e)=>{
 
    let animation = document.getElementById('btn-pressID')
-   if(e.target.innerWidth > 600 && nav_container.classList.contains('nav-center')){
+   if(e.target.innerWidth > 600){
+      if(preview.parentElement.classList.contains('hidden')){
+         preview.parentElement.classList.remove ('hidden')
+      }
+      
       nav_container.classList.remove('nav-center')
       animation.style="animation:peek 1s ease-in-out infinite alternate";
       animation.style.left=`-125px`;
    }
    if(e.target.innerWidth < 600){
+      if(!preview.parentElement.classList.contains('hidden')){
+         preview.parentElement.classList.add('hidden')
+      }
       preview.classList.add('opacity-0')
       preview.classList.remove('opacity-1')
       preview.classList.add('pointer-events-none')
    }
+   //allow video to load once resize is less than 600
+   preview_arr.forEach((item,i)=>{
+   item.addEventListener('mouseover',e=>{
+      let video = e.currentTarget.children[0].children[0]
+      if(video.played.length===0){ //play video if it has not started
+         video.muted=true
+         video.load()
+      }
+      if(video.paused){ //pickup video from where you left off
+         video.muted=true
+         video.load();
+      }
+    })  
 })
+})
+
 window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
@@ -133,6 +156,9 @@ window.addEventListener('click',(e)=>{
    function appear_preview(){
          if(body.clientWidth < 600){
             if(nav_container.classList.contains('nav-center')){
+            preview.classList.add('opacity-1')
+            preview.classList.remove('opacity-1')
+            preview.classList.add('pointer-events-none')
 
             preview2.classList.remove('opacity-0')
             preview2.classList.add('opacity-1')
@@ -144,17 +170,25 @@ window.addEventListener('click',(e)=>{
       preview.classList.add('opacity-1')
       preview.classList.remove('pointer-events-none')
       
+      preview2.classList.add('opacity-1')
+      preview2.classList.remove('opacity-1')
+      preview2.classList.add('pointer-events-none')
+      
    }
 }
    if(body.clientWidth < 600){
    preview_arr2.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
       let video = e.currentTarget.children[0].children[0]
-      console.log(video)
+      console.log(e.target)
       if(video.played.length===0){ //play video if it has not started
+         video.load()
+         video.muted=true
          video.play();
+         
       }
       if(video.paused){ //pickup video from where you left off
+         video.load()
          video.muted=true
          video.play();
       }
@@ -186,6 +220,7 @@ window.addEventListener('click',(e)=>{
       if(video.played.length===0){ //play video if it has not started
          video.muted=true
          video.play();
+         if(video.played)video.load()
       }
       if(video.paused){ //pickup video from where you left off
          video.muted=true
