@@ -54,6 +54,7 @@ if(body.clientWidth > 600){
          video.played.length = 0;
          video.pause();
       }
+        video.attribute.add("preload","metadata")
    })
    }
    //If the preview pane is visible, remove restricted pointer event-none
