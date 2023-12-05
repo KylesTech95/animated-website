@@ -58,6 +58,7 @@ if(body.clientWidth > 600){
          video.played.length = 0;
          video.pause();
       }
+        video.attribute.add("preload","metadata")
    })
    }
    if(preview.classList.contains('opacity-1')){
