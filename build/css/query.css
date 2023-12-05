@@ -118,14 +118,14 @@
 .preview-item2:nth-child(3){
 position: absolute;
 width: 150px;
-/* height: 150px; */
+height: 75px;
 }
 .preview-item2:nth-child(4),
 .preview-item2:nth-child(5),
 .preview-item2:nth-child(6){
 position: absolute;
 width: 150px;
-/* height: 150px; */
+height: 75px;
 
 }
 .preview-item2:nth-child(7),
@@ -133,7 +133,7 @@ width: 150px;
 .preview-item2:nth-child(9){
 position: absolute;
 width: 150px;
-/* height: 150px; */
+height: 100px;
 }
 .preview-item2{
     transition: .3s;
@@ -145,6 +145,7 @@ width: 150px;
     transition: .3s;
     transform:scale(1.15);
 }
+
 
    
 }
