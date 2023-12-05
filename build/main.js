@@ -76,7 +76,20 @@ else{
    if((preview2.classList.contains('opacity-1') && nav_container.classList.contains('nav-center')) && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
       preview2.classList.remove('opacity-1')
       preview2.classList.add('opacity-0')
-      preview2.classList.add('pointer-events-none')
+      preview2preview_arr.forEach((item,i)=>{
+         item.addEventListener('mouseover',e=>{
+            let video = e.currentTarget.children[0].children[0]
+            if(video.played.length===0){ //play video if it has not started
+               video.muted=true
+               video.play();
+               if(video.played)video.load()
+            }
+            if(video.paused){ //pickup video from where you left off
+               video.muted=true
+               video.play();
+            }
+          })  
+      }).classList.add('pointer-events-none')
    }
    else{
       preview2.classList.remove('pointer-events-none')
@@ -108,7 +121,6 @@ function navFn(){
 }
 
 window.addEventListener('resize',(e)=>{
-
    let animation = document.getElementById('btn-pressID')
    if(e.target.innerWidth > 600){
       if(preview.parentElement.classList.contains('hidden')){
@@ -127,21 +139,22 @@ window.addEventListener('resize',(e)=>{
       preview.classList.remove('opacity-1')
       preview.classList.add('pointer-events-none')
    }
-   //allow video to load once resize is less than 600
-   preview_arr.forEach((item,i)=>{
-   item.addEventListener('mouseover',e=>{
-      let video = e.currentTarget.children[0].children[0]
-      if(video.played.length===0){ //play video if it has not started
-         video.muted=true
-         video.load()
-      }
-      if(video.paused){ //pickup video from where you left off
-         video.muted=true
-         video.load();
-      }
-    })  
 })
-})
+// //allow video to load once resize is less than 600
+// preview_arr.forEach((item,i)=>{
+//    item.addEventListener('mouseover',e=>{
+
+//       let video = e.currentTarget.children[0].children[0]
+//       if(video.played.length===0){ //play video if it has not started
+//          video.muted=true
+//          video.load()
+//       }
+//       if(video.paused){ //pickup video from where you left off
+//          video.muted=true
+//          video.load();
+//       }
+//     })  
+// })
 
 window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
@@ -179,6 +192,7 @@ window.addEventListener('click',(e)=>{
    if(body.clientWidth < 600){
    preview_arr2.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
+
       let video = e.currentTarget.children[0].children[0]
       console.log(e.target)
       if(video.played.length===0){ //play video if it has not started
@@ -216,6 +230,7 @@ window.addEventListener('click',(e)=>{
    else{
       preview_arr.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
+
       let video = e.currentTarget.children[0].children[0]
       if(video.played.length===0){ //play video if it has not started
          video.muted=true
