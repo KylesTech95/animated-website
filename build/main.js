@@ -63,6 +63,7 @@ if(body.clientWidth > 600){
       preview.classList.remove('pointer-events-none')
    }
 }
+//if innerwidth is less than 600px
 else{
    preview_arr2.forEach((item,i)=>{
       let video = item.children[0].children[0]
@@ -71,7 +72,7 @@ else{
          video.pause();
       }
    })
-   if(preview2.classList.contains('opacity-1') && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
+   if((preview2.classList.contains('opacity-1') && nav_container.classList.contains('nav-center')) && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
       preview2.classList.remove('opacity-1')
       preview2.classList.add('opacity-0')
       preview2.classList.add('pointer-events-none')
@@ -123,29 +124,29 @@ window.addEventListener('click',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
       nav_container.classList.remove('nav-center')
-      if(body.clientWidth < 600){
          animation.style="animation:peek 1s ease-in-out infinite alternate;left:-125px";
-         preview2.classList.remove('opacity-1')
          preview2.classList.add('opacity-0')
+         preview2.classList.remove('opacity-1')
          preview2.classList.add('pointer-events-none')
-      }
-      
-
    }
 })
    function appear_preview(){
-      if(body.clientWidth < 600){
-      preview2.classList.remove('opacity-0')
-      preview2.classList.add('opacity-1')
-      preview2.classList.remove('pointer-events-none')
-      }
-      else{
-         preview.classList.remove('opacity-0')
-         preview.classList.add('opacity-1')
-         preview2.classList.remaove('pointer-events-none')
+         if(body.clientWidth < 600){
+            if(nav_container.classList.contains('nav-center')){
 
-      } 
+            preview2.classList.remove('opacity-0')
+            preview2.classList.add('opacity-1')
+            preview2.classList.remove('pointer-events-none')
+            }
    }
+   else{
+      preview.classList.remove('opacity-0')
+      preview.classList.add('opacity-1')
+      preview.classList.remove('pointer-events-none')
+      
+   }
+}
+   if(body.clientWidth < 600){
    preview_arr2.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
       let video = e.currentTarget.children[0].children[0]
@@ -158,7 +159,7 @@ window.addEventListener('click',(e)=>{
          video.play();
       }
     })
-    if(body.clientWidth < 600){
+    
       let preview_width = body.clientWidth
       let preview_height = body.clientWidth
       let mod_idx = i%3
@@ -176,9 +177,10 @@ window.addEventListener('click',(e)=>{
    }
    if(i >= 6){item.style=`top:${(mod_idx * (preview_height/3))+225}px;right:25px`}      
    if(i <= 2){item.style=`top:${(mod_idx * (preview_height/3))+225}px;left:25px`} 
-    }
-})
-   preview_arr.forEach((item,i)=>{
+   })
+}
+   else{
+      preview_arr.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
       let video = e.currentTarget.children[0].children[0]
       if(video.played.length===0){ //play video if it has not started
@@ -191,8 +193,12 @@ window.addEventListener('click',(e)=>{
       }
     })  
 })
+}
 
-
+//If the nav-container toggles to nav-left (moves left)
+// if(nav_container.classList.contains('nav-left')){
+//    console.log('test passes')
+// }
 
 
 // //render data into html
