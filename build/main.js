@@ -1,39 +1,33 @@
-let mouse = {x:undefined,y:undefined}
 let body = document.querySelector('body')
 let half_window = body.clientWidth/2
 let half_height = body.clientHeight/2
+let mymouse = {x:undefined,y:undefined};
+
 let gears = document.querySelectorAll('span')
+
 let nav_container = document.querySelector('#nav')
-//desktop preview version
+let html_left = document.querySelector('.li1').getBoundingClientRect().x
+let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
+let side = {
+   left:preview_daddy.getBoundingClientRect().x,
+   right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
+}
+
 let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
-//mobile preview version
-let preview2 = document.getElementById('preview2')
-let preview_daddy2 = document.querySelector('.preview-container-daddy2')
-let preview_arr2 = document.querySelectorAll('.preview-item2')
 
-let mymouse = {x:undefined,y:undefined};
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
-
 
 
 
 //backround appear/disappear mouse event
 window.addEventListener('mousemove',e=>{
-    mouse = {x:e.pageX,y:e.pageY}
+    mymouse = {x:e.pageX,y:e.pageY}
     let quotient = mouse.x/1000
-    let side = {
-      left:preview_daddy.getBoundingClientRect().x,
-      right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
-      }
-   let side_mobile = {
-      left:preview_daddy2.getBoundingClientRect().x,
-      right: preview_daddy2.getBoundingClientRect().x + preview_daddy2.getBoundingClientRect().width
-      }
-   let html_left = document.querySelector('.li1').getBoundingClientRect().x
-   let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
-   mymouse = {x:e.pageX,y:e.pageY}
+    
+      
+//opacity effect on Gears background with css (style)   
 if(mouse.x <= half_window){
      gears.forEach(x=> {
         x.style = `opacity:${quotient}`
@@ -45,13 +39,15 @@ else{
    x.style = `opacity:${quotient}`
    })
 }
-//if statement under mouseover
+
+//if the user moves their mouse outside of the preview pane and/or nav-items(html or Js)
 if(body.clientWidth > 600){
    if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.y < 105 && (mymouse.x < html_left || mouse.x > js_right)))){
       preview.classList.remove('opacity-1')
       preview.classList.add('opacity-0')
       preview.classList.add('pointer-events-none')
 
+      //pause video when you are out of bounds
       preview_arr.forEach((item,i)=>{
       let video = item.children[0].children[0]
       if(video.played.length>=0){
@@ -60,65 +56,13 @@ if(body.clientWidth > 600){
       }
    })
    }
+   //If the preview pane is visible, remove restricted pointer event-none
    if(preview.classList.contains('opacity-1')){
       preview.classList.remove('pointer-events-none')
    }
 }
-//if innerwidth is less than 600px
-else{
-   preview_arr2.forEach((item,i)=>{
-      let video = item.children[0].children[0]
-      if(video.played.length>=0){
-         video.played.length = 0;
-         video.pause();
-      }
-   })
-   if((preview2.classList.contains('opacity-1') && nav_container.classList.contains('nav-center')) && (mymouse.x < side_mobile.left || mymouse.x > side_mobile.right)){
-      preview2.classList.remove('opacity-1')
-      preview2.classList.add('opacity-0')
-      preview2preview_arr.forEach((item,i)=>{
-         item.addEventListener('mouseover',e=>{
-            let video = e.currentTarget.children[0].children[0]
-            if(video.played.length===0){ //play video if it has not started
-               video.muted=true
-               video.play();
-               if(video.played)video.load()
-            }
-            if(video.paused){ //pickup video from where you left off
-               video.muted=true
-               video.play();
-            }
-          })  
-      }).classList.add('pointer-events-none')
-   }
-   else{
-      preview2.classList.remove('pointer-events-none')
-   }
-}
+ 
 })
-
-//Preview should appear once mouseover nav
-function navFn(){
-   let animation = document.getElementById('btn-pressID')
-   if(nav_container.classList.contains('nav-left')){
-         nav_container.classList.toggle('nav-center')
-         animation.style.animation="none";
-         animation.style.left=0;
-   }
-   if(!/nav-center/g.test(nav_container.classList.value)){{
-      animation.style="animation:peek 1s ease-in-out infinite alternate";
-      animation.style.left=`-125px`;
-   }}
-      if(preview2.classList.contains('opacity-1')){
-         {
-            setTimeout(()=>{
-               preview2.classList.add('opacity-0')
-               preview2.classList.remove('opacity-1')
-               preview2.classList.add('pointer-events-none')
-            },250)
-         }
-      }
-}
 
 window.addEventListener('resize',(e)=>{
    let animation = document.getElementById('btn-pressID')
@@ -131,6 +75,7 @@ window.addEventListener('resize',(e)=>{
       animation.style="animation:peek 1s ease-in-out infinite alternate";
       animation.style.left=`-125px`;
    }
+   //If the user resizes the window below 600px
    if(e.target.innerWidth < 600){
       if(!preview.parentElement.classList.contains('hidden')){
          preview.parentElement.classList.add('hidden')
@@ -140,43 +85,26 @@ window.addEventListener('resize',(e)=>{
       preview.classList.add('pointer-events-none')
    }
 })
-// //allow video to load once resize is less than 600
-// preview_arr.forEach((item,i)=>{
-//    item.addEventListener('mouseover',e=>{
-
-//       let video = e.currentTarget.children[0].children[0]
-//       if(video.played.length===0){ //play video if it has not started
-//          video.muted=true
-//          video.load()
-//       }
-//       if(video.paused){ //pickup video from where you left off
-//          video.muted=true
-//          video.load();
-//       }
-//     })  
-// })
-
-window.addEventListener('click',(e)=>{
+//For now, this Fn manipulates btn "Press Me"
+function navFn(){
    let animation = document.getElementById('btn-pressID')
-   if(['bod','nav'].includes(e.target.id) && nav_container.classList.contains('nav-center')){
-      nav_container.classList.remove('nav-center')
-         animation.style="animation:peek 1s ease-in-out infinite alternate;left:-125px";
-         preview2.classList.add('opacity-0')
-         preview2.classList.remove('opacity-1')
-         preview2.classList.add('pointer-events-none')
+   if(nav_container.classList.contains('nav-left')){
+         nav_container.classList.toggle('nav-center')
+         animation.style.animation="none";
+         animation.style.left=0;
    }
-})
-   
-   function appear_preview(){
+   if(!/nav-center/g.test(nav_container.classList.value)){{
+      animation.style="animation:peek 1s ease-in-out infinite alternate";
+      animation.style.left=`-125px`;
+   }}
+}  
+ //Preview should appear once mouseover nav
+function appear_preview(){
          if(body.clientWidth < 600){
             if(nav_container.classList.contains('nav-center')){
             preview.classList.add('opacity-1')
             preview.classList.remove('opacity-1')
             preview.classList.add('pointer-events-none')
-
-            preview2.classList.remove('opacity-0')
-            preview2.classList.add('opacity-1')
-            preview2.classList.remove('pointer-events-none')
             }
    }
    
@@ -192,68 +120,28 @@ window.addEventListener('click',(e)=>{
    }
 }
 nav_container.addEventListener('touchstart', appear_preview)
-nav_container.addEventListener('touchend', appear_preview)
 
-   if(body.clientWidth < 600){
-   preview_arr2.forEach((item,i)=>{
-   item.addEventListener('mouseover',e=>{
-
-      let video = e.currentTarget.children[0].children[0]
-      console.log(e.target)
-      if(video.played.length===0){ //play video if it has not started
-         video.load()
-         video.muted=true
-         video.play();
-         
-      }
-      if(video.paused){ //pickup video from where you left off
-         video.load()
-         video.muted=true
-         video.play();
-      }
-    })
-    
-      let preview_width = body.clientWidth
-      let preview_height = body.clientWidth
-      let mod_idx = i%3
-   if(i > 2 && i < 6){
-      if(i==3){
-         item.style=`top:75px;left:25px`
-      }
-      if(i===4){
-         item.style=`left:${preview_width < 600 ? (preview_width/2.75):(preview_width/2.35)}px;top:75px;`
-         
-      }
-      if(i===5){
-         item.style=`top:75px;right:25px` 
-      }
-   }
-   if(i >= 6){item.style=`top:${(mod_idx * (preview_height/3))+225}px;right:25px`}      
-   if(i <= 2){item.style=`top:${(mod_idx * (preview_height/3))+225}px;left:25px`} 
-   })
-}
-   else{
+if(body.clientWidth > 600){
       preview_arr.forEach((item,i)=>{
-   item.addEventListener('mouseover',e=>{
-
-      let video = e.currentTarget.children[0].children[0]
-      if(video.played.length===0){ //play video if it has not started
-         video.muted=true
-         video.play();
-         if(video.played)video.load()
-      }
-      if(video.paused){ //pickup video from where you left off
-         video.muted=true
-         video.play();
-      }
-    })  
-})
+         item.addEventListener('mouseover',e=>{
+      
+            let video = e.currentTarget.children[0].children[0]
+            if(video.played.length===0){ //play video if it has not started
+               video.muted=true
+               video.play();
+               if(video.played)video.load()
+            }
+            if(video.paused){ //pickup video from where you left off
+               video.muted=true
+               video.play();
+            }
+          })  
+      })
 }
+   
+      
 
-//If the nav-container toggles to nav-left (moves left)
-// if(nav_container.classList.contains('nav-left')){
-//    console.log('test passes')
-// }
+
 
 
 // //render data into html

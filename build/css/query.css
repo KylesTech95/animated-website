@@ -34,7 +34,8 @@ button{
 .preview-item:hover{
     transition:.3s;
     opacity:.9;
-    transform:scale(1.25)
+    transform:scale(1.25);
+    border: 4px solid purple
 }
 @media screen and (max-width: 1375px){
     .settings1,
