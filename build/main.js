@@ -166,6 +166,7 @@ window.addEventListener('click',(e)=>{
          preview2.classList.add('pointer-events-none')
    }
 })
+   
    function appear_preview(){
          if(body.clientWidth < 600){
             if(nav_container.classList.contains('nav-center')){
@@ -178,6 +179,7 @@ window.addEventListener('click',(e)=>{
             preview2.classList.remove('pointer-events-none')
             }
    }
+   
    else{
       preview.classList.remove('opacity-0')
       preview.classList.add('opacity-1')
@@ -189,6 +191,9 @@ window.addEventListener('click',(e)=>{
       
    }
 }
+nav_container.addEventListener('touchstart', appear_preview)
+nav_container.addEventListener('touchend', appear_preview)
+
    if(body.clientWidth < 600){
    preview_arr2.forEach((item,i)=>{
    item.addEventListener('mouseover',e=>{
