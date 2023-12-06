@@ -24,7 +24,10 @@ let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 let major_src;
 let message = document.querySelector('.hidden-message')
 
-
+//function to force scroll to start at top(Jquery)
+$(document).ready(function(){
+   $(this).scrollTop(0)
+});
 function appear(){
    preview.classList.remove('opacity-0')
    preview.classList.add('opacity-1')
@@ -35,6 +38,8 @@ function appear(){
    banner.classList.add('pointer-events-none')
    preview.children[0].classList.add('opacity-1')
    preview.children[0].classList.remove('opacity-0')
+   message.classList.remove('message-gone')
+   message.classList.add('message-appear')
 }
 function disappear(){
    preview.classList.remove('opacity-1')
@@ -43,31 +48,33 @@ function disappear(){
       banner.classList.remove('pointer-events-none')
       banner.classList.remove('opacity-0')
       banner.classList.add('opacity-1')
-
+      message.classList.remove('message-appear')
+      message.classList.add('message-gone')
       preview.classList.remove('shadow-2xl')
 }
 function mouse_over_out(){
    preview_arr.forEach((item,i)=>{
       let video = item.children[0].children[0]
       video.addEventListener('mouseover',e=>{
+            e.currentTarget.load()
             e.currentTarget.classList.remove('opacity-0')
             e.currentTarget.classList.add('opacity-1')
             let source = e.currentTarget.children[0]
-         if(e.currentTarget.played.length===0){ //play e.currentTarget if it has not started
-            e.currentTarget.muted=true
-            e.currentTarget.load()
-         }
-         if(e.currentTarget.paused){ //pickup e.currentTarget from where you left off
-            e.currentTarget.muted=true
-            e.currentTarget.play();
-         }  
-
+            if(e.currentTarget.played.length===0){ //play e.currentTarget if it has not started
+               e.currentTarget.muted=true
+               e.currentTarget.load()
+            }
+            if(e.currentTarget.paused){ //pickup e.currentTarget from where you left off
+               e.currentTarget.muted=true
+               e.currentTarget.play();
+            }  
        })  
        video.addEventListener('mouseout',e=>{
             e.currentTarget.classList.remove('opacity-1')
             e.currentTarget.classList.add('opacity-0')
             let source = e.currentTarget.children[0]
-       })  
+            
+       })
    })
 }
 //Mobile "Press Me" animation
@@ -83,10 +90,6 @@ function navFn(){
       animation.style.left=`-125px`;
    }}
 } 
-$(document).ready(function(){
-    $(this).scrollTop(0)
-});
-
 //backround appear/disappear mouse event
 window.addEventListener('mousemove',e=>{
     mymouse = {x:e.pageX,y:e.pageY}
@@ -113,7 +116,7 @@ if(body.clientWidth > 600){
       preview_arr.forEach((item,i)=>{
       let video = item.children[0].children[0]
       let source = video.children[0]
-      
+
    })
    }
    
@@ -146,12 +149,10 @@ window.addEventListener('resize',(e)=>{
 })
 //assigning video sources depending on nav-list-item
 nav_arr.forEach((li,i)=>{
-   let idx
+   let idx;
    li.addEventListener('mouseover',e=>{
       appear()
-      console.log(e.currentTarget)
       if(li===e.currentTarget)idx=i;
-      console.log(idx)
       preview_arr.forEach(item=>{
       let source = item.children[0].children[0]
       source.src!==undefined ? source.src = media[idx] : source.src=''
@@ -160,19 +161,8 @@ nav_arr.forEach((li,i)=>{
 })
 //appearing video on mouseover
 //disappearing video on mouseout
-preview_arr.forEach((item,i)=>{
-      let video = item.children[0].children[0]
-   video.addEventListener('mouseover',e=>{
-      let v = e.currentTarget;
-      v.classList.remove('opacity-0')
-      v.classList.add('opacity-1')
-   })
-   video.addEventListener('mouseout',e=>{
-      let v = e.currentTarget;
-      v.classList.remove('opacity-1')
-      v.classList.add('opacity-0')
-   })
-})
+mouse_over_out()
+
 
 // //render data into html
 // function render(d){

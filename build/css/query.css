@@ -15,13 +15,15 @@ button{
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.message-appears{
+.message-appear{
 transform:scale(1);
-opacity:1
+opacity:1;
+transition:.3s;
 }
 .message-gone{
     transform:scale(0);
     opacity:0;
+    transition:.3s;
 }
 .html,
 .css,
