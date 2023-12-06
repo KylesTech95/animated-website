@@ -1,0 +1,137 @@
+body{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+button{
+    z-index:995
+}
+.settings1,
+.settings2{
+    font-size: 40rem;
+    transition:.3s;
+    z-index:0;
+}
+.html,
+.css,
+.js{
+    font-size: 4rem;
+}
+.wh,
+.social-container{
+    margin-top:2rem;
+}
+
+.preview-container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.html-preview{
+    transition:.3s;
+}
+.preview-item{
+    transition:.3s;
+    transform:scale(1);
+    z-index:997;
+
+}
+.preview-item>a>video{
+    z-index:998;
+}
+.hidden-message{
+    font-size:3rem;
+}
+.test-video{
+    border-radius:5%    
+}
+.preview-item:hover{
+    opacity:.9;
+    transform:scale(1.25);
+}
+#nav{
+    opacity: .85;  
+}
+#banner{
+    z-index:996;
+}
+@media screen and (max-width: 1375px){
+    .settings1,
+    .settings2{
+        font-size: 35rem 
+    }
+}
+@media screen and (max-width: 1075px){
+    .settings1,
+    .settings2{
+        font-size: 30rem 
+    }
+}
+@media screen and (max-width: 875px){
+    .settings1,
+    .settings2{
+        font-size: 25rem 
+    }
+}
+@media screen and (max-width: 600px){
+    
+    .gears-container{
+        top:8rem;
+    }
+    .settings1,
+    .settings2{
+        font-size: 25rem;
+    }
+    #nav{
+        background:none;
+        height: 65vh;
+        position: fixed;
+        margin: 3.5rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 8rem;
+    }
+    .nav-left{
+        left:-2000px;
+        transition: .25s;
+    }
+    .nav-center{
+        left:0;
+        transition: 1s;
+    }
+    #nav>ul{
+        flex-direction: column;
+        justify-items: center;
+        width: 50%;
+    }
+    
+    .btn-press{
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -125px;
+        animation: peek 1s ease-in-out infinite alternate;
+    }
+    /*Section preciew items */
+    @keyframes peek {
+    0%{
+        transform: translate(0,0)
+    }
+    100%{
+        transform: translate(90px,0)
+    }
+}
+
+   
+}
+
+@media screen and (max-width: 575px){
+    .settings1,
+    .settings2{
+        font-size: 15rem 
+    }
+}
+
+
