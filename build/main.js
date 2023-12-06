@@ -8,27 +8,28 @@ let gears = document.querySelectorAll('span')
 let nav_container = document.querySelector('#nav')
 let html_left = document.querySelector('.li1').getBoundingClientRect().x
 let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
+
+let preview = document.getElementById('preview')
+let preview_daddy = document.querySelector('.preview-container-daddy')
+let preview_arr = document.querySelectorAll('.preview-item')
 let side = {
    left:preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
 }
 
-let preview = document.getElementById('preview')
-let preview_daddy = document.querySelector('.preview-container-daddy')
-let preview_arr = document.querySelectorAll('.preview-item')
-
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 
-
+$(document).ready(function(){
+    $(this).scrollTop(0)
+});
 
 //backround appear/disappear mouse event
 window.addEventListener('mousemove',e=>{
     mymouse = {x:e.pageX,y:e.pageY}
-    let quotient = mouse.x/1000
-    
+    let quotient = mymouse.x/1000
       
 //opacity effect on Gears background with css (style)   
-if(mouse.x <= half_window){
+if(mymouse.x <= half_window){
      gears.forEach(x=> {
         x.style = `opacity:${quotient}`
      })
@@ -42,7 +43,7 @@ else{
 
 //if the user moves their mouse outside of the preview pane and/or nav-items(html or Js)
 if(body.clientWidth > 600){
-   if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.y < 105 && (mymouse.x < html_left || mouse.x > js_right)))){
+   if(preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right)||(mymouse.y < 105 && (mymouse.x < html_left || mymouse.x > js_right)))){
       preview.classList.remove('opacity-1')
       preview.classList.add('opacity-0')
       preview.classList.add('pointer-events-none')
@@ -54,7 +55,6 @@ if(body.clientWidth > 600){
          video.played.length = 0;
          video.pause();
       }
-        video.attribute.add("preload","metadata")
    })
    }
    //If the preview pane is visible, remove restricted pointer event-none
@@ -99,34 +99,23 @@ function navFn(){
       animation.style.left=`-125px`;
    }}
 }  
- //Preview should appear once mouseover nav
+ //Preview should state should disappear once mouseover nav
 function appear_preview(){
-         if(body.clientWidth < 600){
-            if(nav_container.classList.contains('nav-center')){
-            preview.classList.add('opacity-1')
-            preview.classList.remove('opacity-1')
-            preview.classList.add('pointer-events-none')
-            }
-   }
-   
-   else{
+   if(body.clientWidth > 600){
       preview.classList.remove('opacity-0')
       preview.classList.add('opacity-1')
       preview.classList.remove('pointer-events-none')
-      
-      preview2.classList.add('opacity-1')
-      preview2.classList.remove('opacity-1')
-      preview2.classList.add('pointer-events-none')
-      
    }
+      
 }
-nav_container.addEventListener('touchstart', appear_preview)
-
 if(body.clientWidth > 600){
       preview_arr.forEach((item,i)=>{
          item.addEventListener('mouseover',e=>{
-      
             let video = e.currentTarget.children[0].children[0]
+            if(video.classList.contains('opacity-25')){
+               video.classList.remove('opacity-25')
+               video.classList.add('opacity-1')
+            }
             if(video.played.length===0){ //play video if it has not started
                video.muted=true
                video.play();
@@ -135,15 +124,18 @@ if(body.clientWidth > 600){
             if(video.paused){ //pickup video from where you left off
                video.muted=true
                video.play();
+            }  
+          })  
+          item.addEventListener('mouseout',e=>{
+            let video = e.currentTarget.children[0].children[0]
+            if(video.classList.contains('opacity-1')){
+               video.classList.remove('opacity-1')
+               video.classList.add('opacity-25')
+              
             }
           })  
       })
 }
-   
-      
-
-
-
 
 // //render data into html
 // function render(d){
