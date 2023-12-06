@@ -11,6 +11,18 @@ button{
     transition:.3s;
     z-index:0;
 }
+.hidden-message{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.message-appears{
+transform:scale(1);
+opacity:1
+}
+.message-gone{
+    transform:scale(0);
+    opacity:0;
+}
 .html,
 .css,
 .js{

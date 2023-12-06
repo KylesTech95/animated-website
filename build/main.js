@@ -22,13 +22,14 @@ let side = {
 }
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 let major_src;
+let message = document.querySelector('.hidden-message')
+
 
 function appear(){
    preview.classList.remove('opacity-0')
    preview.classList.add('opacity-1')
    preview.classList.remove('pointer-events-none')
-   preview.classList.add('border-4')
-   preview.classList.add('border-green-600')
+   preview.classList.add('shadow-2xl')
    banner.classList.remove('opacity-1')
    banner.classList.add('opacity-0')
    banner.classList.add('pointer-events-none')
@@ -43,8 +44,7 @@ function disappear(){
       banner.classList.remove('opacity-0')
       banner.classList.add('opacity-1')
 
-      preview.classList.remove('border-4')
-      preview.classList.remove('border-green-600')
+      preview.classList.remove('shadow-2xl')
 }
 function mouse_over_out(){
    preview_arr.forEach((item,i)=>{
