@@ -31,15 +31,14 @@
     </div>
 
     <!--Navigation-->
-    <nav id="nav" class="fixed top-0 left-0 w-screen h-26 bg-gray-200 z-10 nav-left">
-        <ul class="list-container flex justify-center items-center leading-7 h-full" onclick="appear_preview()"
-            onmouseover="appear_preview()">
-            <li class="list-item li1 hover:text-orange-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
-                    class="html list-link py-6 material-symbols-outlined">html</a></li>
+    <nav id="nav" class="fixed top-0 left-0 w-screen h-24 bg-gray-200 z-10 nav-left">
+        <ul class="list-container flex justify-center items-center leading-7 h-full">
+            <li class="list-item li1 hover:text-orange-600 hover:bg-white px-24 cursor-pointer duration-300"onclick="html_appear()" onmouseover="html_appear()" onmouseout="html_disappear()"><a href=""
+                    class="html list-link py-4 material-symbols-outlined">html</a></li>
             <li class="list-item li2 hover:text-cyan-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
-                    class="css list-link py-6 material-symbols-outlined">css</a></li>
+                    class="css list-link py-4 material-symbols-outlined">css</a></li>
             <li class="list-item li3 hover:text-yellow-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
-                    class="js list-link py-6 material-symbols-outlined">javascript</a></li>
+                    class="js list-link py-4 material-symbols-outlined">javascript</a></li>
         </ul>
     </nav>
     <!--------------------------------------------------------------->
@@ -48,80 +47,56 @@
         class="btn-press px-10 py-4 bg-gray-400 hover:text-white duration-200 hidden absoute top-0 left-0">Press
         Me</button>
     <!--html preview-->
-    <section class="fixed top-28 flex-control w-screen h-full flex flex-col justify-center items-center mt-4">
-        <div id="preview" class="opacity-0 html-preview pointer-events-none w-4/5 h-full flex flex-col justify-center items-center">
+    <section class="fixed top-28 flex-control w-screen h-screen flex flex-col justify-center items-center mt-4">
+        <div id="preview" class="opacity-0 html-preview pointer-events-none w-4/5 h-full flex flex-col justify-center items-center relative">
+            <h1 class="opacity-0 hidden-message text-red-600 absolute">Hover Over Me!</h1>
             <div class="preview-container-daddy w-full h-full mb-20">
                 <ul id="nav_in" class="preview-container html-container w-4/5">
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
                     <li class="preview-item cursor-pointer">
                         <a href=""
                             class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
-                            </video>
-                        </a>
-                    </li>
-                    <li class="preview-item cursor-pointer">
-                        <a href=""
-                            class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
-                            </video>
-                        </a>
-                    </li>
-                    <li class="preview-item cursor-pointer">
-                        <a href=""
-                            class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
-                            </video>
-                        </a>
-                    </li>
-
-                    <li class="preview-item cursor-pointer">
-                        <a href=""
-                            class="preview-link flex flex-col justify-center items-center">
-                            <video class="test-video opacity-25 duration-300" width="75%" loop>
-                                <source src="./media/int_nav_updated.webm" type="video/webm">
+                            <video class="test-video opacity-0 duration-300" width="90%" loop>
+                                <source src="" type="video/webm">
                             </video>
                         </a>
                     </li>
@@ -129,6 +104,7 @@
             </div>
         </div>
     </section>
+    
 
     <!--------------------------------------------------------------->
     <section id="banner" class="opacity-1 w-screen h-screen flex flex-col justify-center items-center">
@@ -148,79 +124,6 @@
             </div>
         </div>
     </section>
-
-    <!--Mobile View
-    <section class="hidden flex-control2 w-screen h-full flex flex-col justify-center items-center">
-        <div id="preview2" class="opacity-0 html-preview pointer-events-none w-4/5 h-full flex flex-col justify-center items-center">
-            <div class="preview-container-daddy2 w-full h-full mb-20">
-                <ul id="nav_in2" class="preview-container2 html-container w-4/5">
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 hover:shadow-md">
-                        <video class="test-video opacity-02" width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2"  width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                    <li class="preview-item2 cursor-pointer">
-                        <a href="" class="preview-link2 flex flex-col justify-center items-center hover:shadow-md">
-                        <video class="test-video2" width="100%" loop>
-                            <source src="" type="video/webm">
-                        </video>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>-->
 </body>
 <script src="main.js">
 </script>

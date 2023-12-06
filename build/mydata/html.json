@@ -5,14 +5,52 @@
         {
             "id": 1,
             "caption": "Interavtive Navigation Bar",
-            "media":"./media/int_nav.webm",
+            "media":"./media/int_nav_updated.webm",
             "link":"https://kylestech95.github.io/navigation-bar-interactive/",
             "target":"_blank"
         },
         {
             "id": 2,
             "caption": "Interavtive Navigation Bar",
-            "media":"./media/int_nav.webm",
+            "media":"./media/int_nav_updated.webm",
+            "link":"https://kylestech95.github.io/navigation-bar-interactive/",
+            "target":"_blank"
+        }
+        
+       
+],
+"css_data":
+    [
+        {
+            "id": 1,
+            "caption": "Interavtive form",
+            "media":"./media/form_scroll.webm",
+            "link":"https://form-scroll-theme.netlify.app/",
+            "target":"_blank"
+        },
+        {
+            "id": 2,
+            "caption": "Interavtive form",
+            "media":"./media/form_scroll.webm",
+            "link":"https://form-scroll-theme.netlify.app/",
+            "target":"_blank"
+        }
+        
+       
+],
+"js_data":
+    [
+        {
+            "id": 1,
+            "caption": "Interavtive Navigation Bar",
+            "media":"./media/int_nav_updated.webm",
+            "link":"https://kylestech95.github.io/navigation-bar-interactive/",
+            "target":"_blank"
+        },
+        {
+            "id": 2,
+            "caption": "Interavtive Navigation Bar",
+            "media":"./media/int_nav_updated.webm",
             "link":"https://kylestech95.github.io/navigation-bar-interactive/",
             "target":"_blank"
         }

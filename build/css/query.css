@@ -36,6 +36,9 @@ button{
     z-index:999;
 
 }
+.hidden-message{
+    font-size:3rem;
+}
 .test-video{
     border-radius:5%    
 }
@@ -100,9 +103,7 @@ button{
         justify-items: center;
         width: 50%;
     }
-    #nav>ul>li{
-        padding: 1.5rem 5rem;
-    }
+    
     .btn-press{
         display: block;
         position: fixed;

@@ -9,6 +9,7 @@ let nav_container = document.querySelector('#nav')
 let html_left = document.querySelector('.li1').getBoundingClientRect().x
 let js_right = document.querySelector('.li3').getBoundingClientRect().x+document.querySelector('.li3').getBoundingClientRect().width
 
+let section1 = document.querySelector('.flex-control')
 let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
@@ -16,7 +17,6 @@ let side = {
    left:preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
 }
-
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 
 $(document).ready(function(){
@@ -59,6 +59,7 @@ if(body.clientWidth > 600){
       }
    })
    }
+   
    //If the preview pane is visible, remove restricted pointer event-none
    if(preview.classList.contains('opacity-1')){
       preview.classList.remove('pointer-events-none')
@@ -101,43 +102,69 @@ function navFn(){
 }  
  //Preview should state should disappear once mouseover nav
  //Hide banner while the preview is showing
-function appear_preview(){
+function html_appear(){
    if(body.clientWidth > 600){
       preview.classList.remove('opacity-0')
       preview.classList.add('opacity-1')
       preview.classList.remove('pointer-events-none')
+      preview.classList.add('border-4')
+      preview.classList.add('border-green-600')
       banner.classList.remove('opacity-1')
       banner.classList.add('opacity-0')
       banner.classList.add('pointer-events-none')
+      preview.children[0].classList.add('opacity-1')
+      preview.children[0].classList.remove('opacity-0')
+
+      preview_arr.forEach((x,i)=>{
+         let video = x.children[0].children[0]
+         let source = video.children[0]
+         source.src = "./media/int_nav_updated.webm"
+         x.classList.add('border-red-600')
+         x.classList.add('border-4')
+      })
+
    }
       
 }
+function html_disappear(){
+      preview.classList.remove('border-4')
+      preview.classList.remove('border-green-600')
+      preview_arr.forEach((x,i)=>{
+         let video = x.children[0].children[0]
+         let source = video.children[0]
+         source.src = "./media/int_nav_updated.webm"
+         preview.children[0].classList.remove('opacity-1')
+         preview.children[0].classList.add('opacity-0')
+         x.classList.remove('border-red-600')
+         x.classList.remove('border-4')
+      })
+      
+}
+
 if(body.clientWidth > 600){
       preview_arr.forEach((item,i)=>{
          item.addEventListener('mouseover',e=>{
             let video = e.currentTarget.children[0].children[0]
-            console.log(video)
-            if(video.classList.contains('opacity-25')){
-               video.classList.remove('opacity-25')
+
+               video.classList.remove('opacity-0')
                video.classList.add('opacity-1')
-            }
+            
             if(video.played.length===0){ //play video if it has not started
                video.muted=true
                video.play();
-               if(video.played)video.load()
+               video.load()
             }
             if(video.paused){ //pickup video from where you left off
                video.muted=true
                video.play();
             }  
+
           })  
           item.addEventListener('mouseout',e=>{
             let video = e.currentTarget.children[0].children[0]
-            if(video.classList.contains('opacity-1')){
                video.classList.remove('opacity-1')
-               video.classList.add('opacity-25')
+               video.classList.add('opacity-0')
               
-            }
           })  
       })
 }
