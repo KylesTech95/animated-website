@@ -14,7 +14,7 @@ let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
 let nav_arr = document.querySelectorAll('#nav>.list-container>.list-item')
-let media = ["./media/int_nav_updated.webm", "./media/form_scroll.webm", undefined]
+let media = ["./media/int_nav_updated.webm", "./media/form_scroll.webm", "./media/autotxtFn.webm"]
 
 let side = {
    left: preview_daddy.getBoundingClientRect().x,
@@ -28,6 +28,20 @@ let message = document.querySelector('.hidden-message')
 $(document).ready(function () {
    $(this).scrollTop(0)
 });
+function autoTextFn(text, heading) {
+   text = [...text]//text.split``
+   let i = 0, arr = [], len = text.length
+   let timer = setInterval(() => {
+     let take = text.shift(text[i])
+     i += 1
+     arr.push(take)
+     heading.textContent = arr.join``
+     // console.log(text)//sender
+     // console.log(arr)//receiver
+     // console.log(arr.length,len)//compare arr's length w/ original text length
+     if (arr.length === len) clearInterval(timer)//clearInterval once both lengths are the same.
+   }, 50)
+}
 function appear() {
    preview.classList.remove('opacity-0')
    preview.classList.add('opacity-1')
@@ -40,6 +54,7 @@ function appear() {
    preview.children[0].classList.remove('opacity-0')
    message.classList.remove('message-gone')
    message.classList.add('message-appear')
+
 }
 function disappear() {
    preview.classList.remove('opacity-1')
@@ -51,6 +66,7 @@ function disappear() {
    message.classList.remove('message-appear')
    message.classList.add('message-gone')
    preview.classList.remove('shadow-2xl')
+   
 }
 function mouse_over_out() {
    preview_arr.forEach((item, i) => {
@@ -124,27 +140,6 @@ window.addEventListener('mousemove', e => {
       if (preview.classList.contains('opacity-1')) {
          preview.classList.remove('pointer-events-none')
       }
-   }
-})
-window.addEventListener('resize', (e) => {
-   let animation = document.getElementById('btn-pressID')
-   if (e.target.innerWidth > 600) {
-      if (preview.parentElement.classList.contains('hidden')) {
-         preview.parentElement.classList.remove('hidden')
-      }
-
-      nav_container.classList.remove('nav-center')
-      animation.style = "animation:peek 1s ease-in-out infinite alternate";
-      animation.style.left = `-125px`;
-   }
-   //If the user resizes the window below 600px
-   if (e.target.innerWidth < 600) {
-      if (!preview.parentElement.classList.contains('hidden')) {
-         preview.parentElement.classList.add('hidden')
-      }
-      preview.classList.add('opacity-0')
-      preview.classList.remove('opacity-1')
-      preview.classList.add('pointer-events-none')
    }
 })
 //assigning video sources depending on nav-list-item

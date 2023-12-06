@@ -14,9 +14,10 @@ button{
 .hidden-message{
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition:.1s
 }
 .message-appear{
-transform:scale(.75);
+transform:scale(1.10);
 opacity:1;
 transition:.3s;
 }
@@ -48,6 +49,10 @@ transition:.3s;
     transition:.3s;
     transform:scale(1);
     z-index:997;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 .preview-item>a>video{
@@ -57,11 +62,15 @@ transition:.3s;
     font-size:3rem;
 }
 .test-video{
-    border-radius:5%    
-}
+    object-fit: initial;
+    height: 275px;
+  }
 .preview-item:hover{
     opacity:.9;
-    transform:scale(1.25);
+    transform:scale(1.15);
+}
+.test-video:hover{
+box-shadow: 0 0 1rem .25px #333;
 }
 #nav{
     opacity: .85;  
