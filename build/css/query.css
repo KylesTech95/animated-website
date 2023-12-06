@@ -7,7 +7,7 @@ button{
 }
 .settings1,
 .settings2{
-    font-size: 40rem;
+    font-size: 30rem;
     transition:.3s;
     z-index:0;
 }
@@ -16,7 +16,7 @@ button{
     letter-spacing: 1px;
 }
 .message-appear{
-transform:scale(1);
+transform:scale(.75);
 opacity:1;
 transition:.3s;
 }
