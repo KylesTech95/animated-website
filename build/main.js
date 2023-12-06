@@ -2,7 +2,7 @@ let body = document.querySelector('body')
 let half_window = body.clientWidth/2
 let half_height = body.clientHeight/2
 let mymouse = {x:undefined,y:undefined};
-
+let banner = document.getElementById('banner')
 let gears = document.querySelectorAll('span')
 
 let nav_container = document.querySelector('#nav')
@@ -22,7 +22,6 @@ let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 $(document).ready(function(){
     $(this).scrollTop(0)
 });
-
 //backround appear/disappear mouse event
 window.addEventListener('mousemove',e=>{
     mymouse = {x:e.pageX,y:e.pageY}
@@ -47,7 +46,10 @@ if(body.clientWidth > 600){
       preview.classList.remove('opacity-1')
       preview.classList.add('opacity-0')
       preview.classList.add('pointer-events-none')
+      banner.classList.remove('pointer-events-none')
 
+      banner.classList.remove('opacity-0')
+      banner.classList.add('opacity-1')
       //pause video when you are out of bounds
       preview_arr.forEach((item,i)=>{
       let video = item.children[0].children[0]
@@ -62,9 +64,7 @@ if(body.clientWidth > 600){
       preview.classList.remove('pointer-events-none')
    }
 }
- 
 })
-
 window.addEventListener('resize',(e)=>{
    let animation = document.getElementById('btn-pressID')
    if(e.target.innerWidth > 600){
@@ -100,11 +100,15 @@ function navFn(){
    }}
 }  
  //Preview should state should disappear once mouseover nav
+ //Hide banner while the preview is showing
 function appear_preview(){
    if(body.clientWidth > 600){
       preview.classList.remove('opacity-0')
       preview.classList.add('opacity-1')
       preview.classList.remove('pointer-events-none')
+      banner.classList.remove('opacity-1')
+      banner.classList.add('opacity-0')
+      banner.classList.add('pointer-events-none')
    }
       
 }
@@ -112,6 +116,7 @@ if(body.clientWidth > 600){
       preview_arr.forEach((item,i)=>{
          item.addEventListener('mouseover',e=>{
             let video = e.currentTarget.children[0].children[0]
+            console.log(video)
             if(video.classList.contains('opacity-25')){
                video.classList.remove('opacity-25')
                video.classList.add('opacity-1')

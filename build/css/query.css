@@ -16,7 +16,10 @@ button{
 .js{
     font-size: 4rem;
 }
-
+.wh,
+.social-container{
+    margin-top:2rem;
+}
 
 .preview-container{
     display: grid;
@@ -29,7 +32,6 @@ button{
 }
 .preview-item{
     transition:.3s;
-    opacity:.9;
     transform:scale(1);
     z-index:999;
 
@@ -40,6 +42,12 @@ button{
 .preview-item:hover{
     opacity:.9;
     transform:scale(1.25);
+}
+#nav{
+    opacity: .85;  
+}
+#banner{
+    z-index:996;
 }
 @media screen and (max-width: 1375px){
     .settings1,
