@@ -23,6 +23,24 @@ let side = {
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 let major_src;
 let message = document.querySelector('.hidden-message')
+let instructions = document.querySelectorAll('.opacity-instructions-container')
+
+instructions.forEach((ins,i)=>{
+  
+   setTimeout(()=>{
+      ins.style.opacity='0'
+   },5000)
+   setTimeout(()=>{
+      if(i===0){
+         ins.classList.remove('-left-40')
+         ins.classList.add('left-24')
+      }
+      else{
+         ins.classList.remove('-right-40')
+         ins.classList.add('right-24')
+      }
+   },750*(i+1))
+})
 
 //function to force scroll to start at top(Jquery)
 $(document).ready(function () {
