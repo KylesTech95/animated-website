@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="m-0 p-0 box-border">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--Tailwind-->
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/query.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body class="h-screen w-screen bg-purple-200 font-serif container" id="bod">
+
+    <!--Gear-background-->
+    <div class="gears-container gears-bg gears absolute w-screen z-0 pointer-events-none">
+        <div class="test mt-40 absolute left-20 opacity-75">
+            <span class="material-symbols-outlined settings1 pointer-events-none animate-rotation m-0 text-gray-400">
+                settings
+            </span>
+        </div>
+        <div class="test absolute right-20 opacity-50">
+            <span class="material-symbols-outlined settings2 pointer-events-none animate-reverse m-0 text-gray-400">
+                settings
+            </span>
+        </div>
+    </div>
+
+    <!--Navigation-->
+    <nav id="nav" class="fixed top-0 left-0 w-screen h-24 bg-gray-200 z-10 nav-left">
+        <ul class="list-container flex justify-center items-center leading-7 h-full">
+            <li class="list-item li1 hover:text-blue-400 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
+                class="tailwind list-link py-4 material-symbols-outlined">tailwind</a></li>
+            <li class="list-item li2 hover:text-orange-600 hover:bg-white px-24 cursor-pointer duration-300" ><a href=""
+                    class="html list-link py-4 material-symbols-outlined">html</a></li>
+            <li class="list-item li3 hover:text-cyan-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
+                    class="css list-link py-4 material-symbols-outlined">css</a></li>
+            <li class="list-item li4 hover:text-yellow-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
+                    class="js list-link py-4 material-symbols-outlined">javascript</a></li>
+            <li class="list-item li5 hover:text-green-600 hover:bg-white px-24 cursor-pointer duration-300"><a href=""
+                        class="react list-link py-4 material-symbols-outlined">reactjs</a></li>
+        </ul>
+    </nav>
+    <!--------------------------------------------------------------->
+
+    <button onclick="navFn()" id="btn-pressID"
+        class="btn-press px-10 py-4 bg-gray-400 hover:text-white duration-200 hidden absoute top-0 left-0">Press
+        Me</button>
+    <!--html preview-->
+    <section class="fixed top-28 flex-control w-screen h-screen flex flex-col justify-center items-center mt-4">
+        <div id="preview" class="opacity-0 html-preview pointer-events-none w-4/5 h-full flex flex-col justify-center items-center relative">
+            <h2 class="opacity-0 hidden-message0 absolute message-gone text-gray-500"></h2>
+            <h2 class="opacity-0 hidden-message absolute message-gone text-red-500">hover</h2>
+            <div class="preview-container-daddy w-full h-full mb-20">
+                <ul id="nav_in" class="preview-container html-container mb-12">
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                    <li class="preview-item cursor-pointer">
+                        <a href=""class="preview-link flex flex-col justify-center items-center">
+                            <video class="test-video opacity-0 duration-300" width="100%" loop>
+                                <source src="" type="video/webm">
+                            </video>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+
+    <!--------------------------------------------------------------->
+    <section id="banner" class="opacity-1 w-screen h-screen flex flex-col justify-center items-center">
+        <div class="welcome-container flex flex-col justify-center items-center">
+            <div class="welcome-heading-container">
+                <h1 class="wh welcome-heading text-center">welcome</h1>
+                <h2 class="wh welcome-subheading1 text-center">webflow solutions for a creative & unique <span
+                        id="touch">touch</span></h2>
+                <h3 class="wh welcome-subheading2 text-center">Kyle, a developer</h3>
+            </div>
+            <div class="social-container">
+                <ul class="social-list-container">
+                    <li class="social-list-item"><a href="" class="social-link">Github</a></li>
+                    <li class="social-list-item"><a href="" class="social-link">Facebook</a></li>
+                    <li class="social-list-item"><a href="" class="social-link">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--Instructions regarding opacity background-->
+    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/3 -left-40 duration-300">
+        <h2 class="opacity-header text-gray-500">mouse left</h2>
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+    </div>
+    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/3 -right-40 duration-300">
+        <h2 class="opacity-header text-gray-500">mouse right</h2>
+            <span class="material-symbols-outlined">
+                arrow_right_alt
+            </span>
+    </div>
+</body>
+<script src="main.js">
+</script>
+
+</html>
