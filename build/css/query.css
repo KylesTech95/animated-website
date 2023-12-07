@@ -14,11 +14,16 @@ button{
 .opacity-header{
     font-size: 20px;
     text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight:700;
+    text-shadow: .25px .25px 4px #fff;
 }
 .hidden-message{
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition:.1s
+    transition:.1s;
+    font-family: 'Lato', sans-serif;
+
 }
 .message-appear{
 transform:scale(1.10);
@@ -72,7 +77,7 @@ transition:.3s;
 }
 .preview-item:hover{
     opacity:.9;
-    transform:scale(1.15);
+    transform:scale(1.05);
 }
 .test-video:hover{
 box-shadow: 0 0 1rem .25px #333;

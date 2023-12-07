@@ -29,7 +29,7 @@ instructions.forEach((ins,i)=>{
   
    setTimeout(()=>{
       ins.style.opacity='0'
-   },5000)
+   },8000)
    setTimeout(()=>{
       if(i===0){
          ins.classList.remove('-left-40')

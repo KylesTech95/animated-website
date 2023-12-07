@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="css/query.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js  "></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -18,12 +21,12 @@
 
     <!--Gear-background-->
     <div class="gears-container gears-bg gears absolute w-screen z-0 pointer-events-none">
-        <div class="test mt-40 absolute left-20">
+        <div class="test mt-40 absolute left-20 opacity-75">
             <span class="material-symbols-outlined settings1 pointer-events-none animate-rotation m-0 text-gray-400">
                 settings
             </span>
         </div>
-        <div class="test absolute right-20">
+        <div class="test absolute right-20 opacity-50">
             <span class="material-symbols-outlined settings2 pointer-events-none animate-reverse m-0 text-gray-400">
                 settings
             </span>
@@ -49,7 +52,7 @@
     <!--html preview-->
     <section class="fixed top-28 flex-control w-screen h-screen flex flex-col justify-center items-center mt-4">
         <div id="preview" class="opacity-0 html-preview pointer-events-none w-4/5 h-full flex flex-col justify-center items-center relative">
-            <h2 class="opacity-0 hidden-message text-red-600 absolute message-gone">hover me</h2>
+            <h2 class="opacity-0 hidden-message absolute message-gone text-gray-500">hover</h2>
             <div class="preview-container-daddy w-full h-full mb-20">
                 <ul id="nav_in" class="preview-container html-container mb-12">
                     <li class="preview-item cursor-pointer">
@@ -119,14 +122,14 @@
         </div>
     </section>
     <!--Instructions regarding opacity background-->
-    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/2 -left-40 duration-300">
-        <h2 class="opacity-header">mouse left</h2>
+    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/3 -left-40 duration-300">
+        <h2 class="opacity-header text-gray-500">mouse left</h2>
         <span class="material-symbols-outlined">
             arrow_back
         </span>
     </div>
-    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/2 -right-40 duration-300">
-        <h2 class="opacity-header">mouse right</h2>
+    <div class="opacity-instructions-container opacity-instructions fixed bottom-1/3 -right-40 duration-300">
+        <h2 class="opacity-header text-gray-500">mouse right</h2>
             <span class="material-symbols-outlined">
                 arrow_right_alt
             </span>
