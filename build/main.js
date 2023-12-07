@@ -1,4 +1,5 @@
 let body = document.querySelector('body')
+let notab = document.querySelectorAll('[tab="tab"]')
 let half_window = body.clientWidth / 2
 let half_height = body.clientHeight / 2
 let mymouse = { x: undefined, y: undefined };
@@ -24,6 +25,15 @@ let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 let major_src;
 let message = document.querySelector('.hidden-message')
 let instructions = document.querySelectorAll('.opacity-instructions-container')
+let c = 1;
+document.querySelectorAll('*').forEach(element=>element.setAttribute('notab','notab'))
+window.addEventListener('keydown',e=>{
+   if(e.key==='Tab'){
+      e.preventDefault()
+      console.log('Tab' + c++)
+   }
+   
+})
 
 instructions.forEach((ins,i)=>{
   
@@ -126,6 +136,7 @@ function navFn() {
 }
 //backround appear/disappear mouse event
 window.addEventListener('mousemove', e => {
+
    mymouse = { x: e.pageX, y: e.pageY }
    let quotient = mymouse.x / 1000
 
