@@ -47,6 +47,7 @@ transition:.3s;
     font-size:2.5rem;
     margin:.75rem 0;
     letter-spacing: .75px;
+    text-transform: uppercase;
 }
 
 .wh,
@@ -112,6 +113,14 @@ box-shadow: 0 0 1rem .25px #333;
 }
 #nav{
     opacity: .85;  
+}
+#nav>ul>li{
+    transition: .3s;
+}
+#nav>ul>li:hover{
+    box-shadow:inset 5px 5px 6px .25px #333;
+    border-left:none;
+    border-right:none;
 }
 #banner{
     z-index:996;
