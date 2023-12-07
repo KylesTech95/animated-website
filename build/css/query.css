@@ -115,12 +115,10 @@ box-shadow: 0 0 1rem .25px #333;
     opacity: .85;  
 }
 #nav>ul>li{
-    transition: .3s;
+    transition:10;
 }
-#nav>ul>li:hover{
+.pressed{
     box-shadow:inset 5px 5px 6px .25px #333;
-    border-left:none;
-    border-right:none;
 }
 #banner{
     z-index:996;

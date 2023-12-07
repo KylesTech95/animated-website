@@ -202,6 +202,7 @@ window.addEventListener('mousemove', e => {
    if (body.clientWidth > 600) {
       if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
          disappear()
+         
          //pause video when you are out of bounds
          preview_arr.forEach((item, i) => {
             let video = item.children[0].children[0]
@@ -228,24 +229,29 @@ arr.forEach((element,i)=>{
       temp.push(element)
    }
 })
-temp.forEach(el=>{
-   nav_container.removeChild(el)
+   temp.forEach(el=>{
+      nav_container.removeChild(el)
+      })
+   }
+})
+function pressed(li){
+li.classList.add('pressed')
+}
+//remove all that is pressed
+function unpressed(){
+nav_arr.forEach(li=>{
+   li.classList.remove('pressed')
 })
 }
-
-
-
-
-
-
-
-
-})
 //assigning video sources depending on nav-list-item
 nav_arr.forEach((li, i) => {
    let idx;
    li.addEventListener('mouseover', e => {
+      unpressed()
+      console.log(e.target)
       appear()
+      pressed(e.currentTarget)
+      li.classList.ad
       if (li === e.currentTarget) idx = i;
       message0.textContent = nav_arr[idx].children[0].textContent
       preview_arr.forEach(item => {
