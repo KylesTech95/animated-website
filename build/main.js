@@ -146,10 +146,15 @@ function scrollDownDisappear(){
    scrollDown.classList.remove('pointer-events-none')
    return
 }
-
-// function scrollDown(){
- 
-// }
+function scrollDownFn(){
+   let target = section.getBoundingClientRect().y;
+   window.scrollTo(0,target); 
+   let arri = [...scrollDown.children]
+      arri.forEach(arrow =>{
+         console.log(arrow)
+      })
+   
+}
 function appear() {
 bannerAppear()
 hiddenMessageAppear()
@@ -214,17 +219,10 @@ function navFn() {
          bannerDisappear()
    }
 }
-let swiper = document.createElement('div')
-preview.appendChild(swiper)
-let target = window.innerHeight - (section.getBoundingClientRect().y+section.getBoundingClientRect().height);
-document.addEventListener('scroll',(e)=>{
-let currentPos = window.scrollY
 
-
-})
 //backround appear/disappear mouse event
 window.addEventListener('mousemove', e => {
-
+e.preventDefault()
    mymouse = { x: e.pageX, y: e.pageY }
    let quotient = mymouse.x / 1000
 
