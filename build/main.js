@@ -149,10 +149,7 @@ function scrollDownDisappear(){
 function scrollDownFn(){
    let target = section.getBoundingClientRect().y;
    window.scrollTo(0,target); 
-   let arri = [...scrollDown.children]
-      arri.forEach(arrow =>{
-         console.log(arrow)
-      })
+   
    
 }
 function appear() {
@@ -185,7 +182,7 @@ function mouse_over_out() {
          caption.classList.add('text-red-500')
          
          let source = e.currentTarget.children[0]
-         if (e.currentTarget.played.length === 0) { //play e.currentTarget if it has not started
+         if (e.currentTarget.paused || e.currentTarget.played.length === 0) { //play e.currentTarget if it has not started
             e.currentTarget.muted = true
             e.currentTarget.play()
          }
@@ -200,7 +197,10 @@ function mouse_over_out() {
          message.classList.remove('message-gone')
          message0.classList.add('message-appear')
          message0.classList.remove('message-gone')
-         if(e.currentTarget.played.length < 0)e.currentTarget.pause()
+         if(e.currentTarget.played.length > 0){
+            e.currentTarget.pause()
+            
+         }
       })
    })
 }
