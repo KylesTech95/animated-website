@@ -8,6 +8,11 @@ button{
 .down-arrow{
     font-size: 4rem;
 }
+.figCap{
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-family: 'Dhurjati', sans-serif;
+}
 .scroll-down-container{
     position: relative;
     width: 100vw;
@@ -20,8 +25,9 @@ button{
     cursor: pointer;
 }
 .blank-container{
-    height: 50vh;
+    height: 75vh;
 }
+
 .rotate{
     transform: rotate(-90deg);
     margin-top: -30px;

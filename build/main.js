@@ -15,7 +15,7 @@ let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
 let nav_arr = document.querySelectorAll('#nav>.list-container>.list-item')
 let media = ["./media/tailwindrec.mp4","./media/int_nav_updated.webm", "./media/form_scroll.webm", "./media/autotxtFn.webm","./media/eightballjs.mp4",]
-
+let scrollDown = document.querySelector('.scroll-down-container');
 let side = {
    left: preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
@@ -98,7 +98,7 @@ function previewAppear(){
    return
 }
 function hiddenMessageAppear(){
-   setTimeout(float,500)
+   setTimeout(float,250)
    message0.classList.remove('message-gone')
    message0.classList.add('message-appear')
    message.classList.remove('message-gone')
@@ -108,6 +108,12 @@ function bannerAppear(){
    banner.classList.remove('opacity-1')
    banner.classList.add('opacity-0')
    banner.classList.add('pointer-events-none')
+   return
+}
+function scrollDownAppear(){
+   scrollDown.classList.remove('opacity-1')
+   scrollDown.classList.add('opacity-0')
+   scrollDown.classList.add('pointer-events-none')
    return
 }
 function previewDisappear(){
@@ -134,6 +140,12 @@ function bannerDisappear(){
    banner.classList.add('opacity-1')
    return
 }
+function scrollDownDisappear(){
+   scrollDown.classList.add('opacity-1')
+   scrollDown.classList.remove('opacity-0')
+   scrollDown.classList.remove('pointer-events-none')
+   return
+}
 
 // function scrollDown(){
  
@@ -149,6 +161,8 @@ hiddenMessageDisappear()
 bannerDisappear()
 }
 function mouse_over_out() {
+   let caption = document.createElement('h1')
+   let text = 'Click to see more'
    preview_arr.forEach((item, i) => {
       let video = item.children[0].children[0]
       video.addEventListener('mouseover', e => {
@@ -158,6 +172,13 @@ function mouse_over_out() {
          message0.classList.add('message-gone')
          e.currentTarget.classList.remove('opacity-0')
          e.currentTarget.classList.add('opacity-1')
+         let li = e.target.parentElement.parentElement
+         li.appendChild(caption)
+         caption.textContent = text
+         caption.classList.add('figCap')
+         // caption.classList.add('text-gray-500')
+         caption.classList.add('text-red-500')
+         
          let source = e.currentTarget.children[0]
          if (e.currentTarget.played.length === 0) { //play e.currentTarget if it has not started
             e.currentTarget.muted = true
@@ -165,6 +186,8 @@ function mouse_over_out() {
          }
       })
       video.addEventListener('mouseout', e => {
+         let li = e.target.parentElement.parentElement
+         li.removeChild(caption)
          e.currentTarget.classList.remove('opacity-1')
          e.currentTarget.classList.add('opacity-0')
          let source = e.currentTarget.children[0]
@@ -223,11 +246,12 @@ window.addEventListener('mousemove', e => {
       if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
          disappear()
          unpressed()
+         scrollDownDisappear()
          //pause video when you are out of bounds
          preview_arr.forEach((item, i) => {
             let video = item.children[0].children[0]
             let source = video.children[0]
-
+         
          })
       }
 
@@ -269,6 +293,7 @@ nav_arr.forEach((li, i) => {
    li.addEventListener('mouseover', e => {
       unpressed()
       appear()
+      scrollDownAppear()
       pressed(e.currentTarget)
       if (li === e.currentTarget) idx = i;
       message0.textContent = nav_arr[idx].children[0].textContent
