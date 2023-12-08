@@ -14,7 +14,7 @@ let preview = document.getElementById('preview')
 let preview_daddy = document.querySelector('.preview-container-daddy')
 let preview_arr = document.querySelectorAll('.preview-item')
 let nav_arr = document.querySelectorAll('#nav>.list-container>.list-item')
-let media = [undefined,"./media/int_nav_updated.webm", "./media/form_scroll.webm", "./media/autotxtFn.webm",undefined,]
+let media = ["./media/tailwindrec.mp4","./media/int_nav_updated.webm", "./media/form_scroll.webm", "./media/autotxtFn.webm","./media/eightballjs.mp4",]
 
 let side = {
    left: preview_daddy.getBoundingClientRect().x,
@@ -196,6 +196,7 @@ preview.appendChild(swiper)
 let target = window.innerHeight - (section.getBoundingClientRect().y+section.getBoundingClientRect().height);
 document.addEventListener('scroll',(e)=>{
 let currentPos = window.scrollY
+
 
 })
 //backround appear/disappear mouse event
