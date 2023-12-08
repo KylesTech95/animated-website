@@ -5,6 +5,32 @@ body{
 button{
     z-index:995
 }
+.down-arrow{
+    font-size: 4rem;
+}
+.scroll-down-container{
+    position: relative;
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+.blank-container{
+    height: 50vh;
+}
+.rotate{
+    transform: rotate(-90deg);
+    margin-top: -30px;
+    transition: .25s ease;
+}
+.rotate:hover{
+    transition: .25s ease;
+    font-size: 4.5rem;
+}
 .settings1,
 .settings2{
     font-size: 30rem;
@@ -114,6 +140,7 @@ box-shadow: 0 0 1rem .25px #333;
 #nav{
     opacity: .85;  
 }
+
 #nav>ul>li{
     transition:10;
 }

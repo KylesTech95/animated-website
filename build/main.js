@@ -31,14 +31,13 @@ let float = ()=> {
    message0.classList.add('float-up')
 }
 document.querySelectorAll('*').forEach(element=>element.setAttribute('notab','notab'))
-
+let section = document.querySelector('.blank-container')
 
 
 //Keydown that detects the "Tab" key & disables every element when pressing "Tab"
 window.addEventListener('keydown',e=>{
    if(e.key==='Tab'){
       e.preventDefault()
-      console.log('Tab' + c++)
    }
    
 })
@@ -64,7 +63,14 @@ instructions.forEach((ins,i)=>{
 $(document).ready(function () {
    $(this).scrollTop(0)
 });
+function noPointer(){
+   body.classList.add('pointer-events-none')
+}
+function hiPointer(){
+   body.classList.remove('pointer-events-none')
+}
 function autoTextFn(text, heading) {
+   noPointer()
    text = [...text]//text.split``
    let i = 0, arr = [], len = text.length
    let timer = setInterval(() => {
@@ -75,9 +81,13 @@ function autoTextFn(text, heading) {
      // console.log(text)//sender
      // console.log(arr)//receiver
      // console.log(arr.length,len)//compare arr's length w/ original text length
-     if (arr.length === len) clearInterval(timer)//clearInterval once both lengths are the same.
+     if (arr.length === len) {
+      clearInterval(timer)
+      hiPointer()
+   }//clearInterval once both lengths are the same.
    }, 50)
 }
+
 function previewAppear(){
    preview.classList.remove('opacity-0')
    preview.classList.add('opacity-1')
@@ -88,7 +98,7 @@ function previewAppear(){
    return
 }
 function hiddenMessageAppear(){
-   setTimeout(float,750)
+   setTimeout(float,500)
    message0.classList.remove('message-gone')
    message0.classList.add('message-appear')
    message.classList.remove('message-gone')
@@ -125,7 +135,9 @@ function bannerDisappear(){
    return
 }
 
-
+// function scrollDown(){
+ 
+// }
 function appear() {
 bannerAppear()
 hiddenMessageAppear()
@@ -179,6 +191,13 @@ function navFn() {
          bannerDisappear()
    }
 }
+let swiper = document.createElement('div')
+preview.appendChild(swiper)
+let target = window.innerHeight - (section.getBoundingClientRect().y+section.getBoundingClientRect().height);
+document.addEventListener('scroll',(e)=>{
+let currentPos = window.scrollY
+
+})
 //backround appear/disappear mouse event
 window.addEventListener('mousemove', e => {
 
@@ -202,7 +221,7 @@ window.addEventListener('mousemove', e => {
    if (body.clientWidth > 600) {
       if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
          disappear()
-         
+         unpressed()
          //pause video when you are out of bounds
          preview_arr.forEach((item, i) => {
             let video = item.children[0].children[0]
@@ -248,10 +267,8 @@ nav_arr.forEach((li, i) => {
    let idx;
    li.addEventListener('mouseover', e => {
       unpressed()
-      console.log(e.target)
       appear()
       pressed(e.currentTarget)
-      li.classList.ad
       if (li === e.currentTarget) idx = i;
       message0.textContent = nav_arr[idx].children[0].textContent
       preview_arr.forEach(item => {
