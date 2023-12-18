@@ -16,12 +16,15 @@ button{
 }
 .down-arrow{
     font-size: 4rem;
+    
 }
+
 .figCap{
     margin-top: 8px;
     font-size: 2rem;
     font-family: 'Dhurjati', sans-serif;
 }
+
 .scroll-down-container{
     position: relative;
     width: 100vw;
@@ -30,13 +33,20 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 8%;
+    bottom: 15%;
     cursor: pointer;
 }
-.blank-container{
-    height: 80vh;
+.scroll-down-container2{
+    position: relative;
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 20%;
+    cursor: pointer;
 }
-
 .rotate{
     transform: rotate(-90deg);
     margin-top: -30px;
@@ -44,7 +54,18 @@ button{
     opacity:0;
     font-size: 3.25rem;
 }
+.rotate2{
+    transform: rotate(90deg);
+    margin-top: -30px;
+    transition: .25s ease;
+    opacity:0;
+    font-size: 3.25rem;
+}
 .rotate:hover{
+    transition: .25s ease;
+    font-size: 4.5rem;
+}
+.rotate2:hover{
     transition: .25s ease;
     font-size: 4.5rem;
 }
@@ -69,6 +90,9 @@ button{
     font-family: 'Lato', sans-serif;
 
 }
+.list-container>li>a{
+    letter-spacing: 1.5px;
+}
 .message-appear{
 transform:scale(1.10);
 opacity:1;
@@ -79,11 +103,16 @@ transition:.3s;
     opacity:0;
     transition:.3s;
 }
-.html,
-.css,
-.js{
-    font-size: 4rem;
+.resources,
+.projects,
+.animation,
+.games,
+.backend{
+    font-size: 1.5rem;
+    font-family: 'Dhurjati', sans-serif;
+
 }
+
 .react,
 .tailwind{
     font-family: 'Dhurjati', sans-serif;
@@ -125,7 +154,8 @@ transition:.3s;
 }
 .hidden-message0{
     transition: .3s;
-    font-size: 3rem;
+    font-size: 6rem;
+    opacity:.25;
 }
 .pull-down{
     animation:pull .5s ease linear forwards;

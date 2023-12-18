@@ -16,6 +16,7 @@ let preview_arr = document.querySelectorAll('.preview-item')
 let nav_arr = document.querySelectorAll('#nav>.list-container>.list-item')
 let media = ["./media/tailwindrec.mp4","./media/css_log_animation.webm", "./media/form_scroll.webm", "./media/autotxtFn.webm","./media/eightballjs.mp4",]
 let scrollDown = document.querySelector('.scroll-down-container');
+let scrollDown2 = document.querySelector('.scroll-down-container2');
 let side = {
    left: preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
@@ -26,6 +27,7 @@ let message0 = document.querySelector('.hidden-message0')
 let message = document.querySelector('.hidden-message')
 let instructions = document.querySelectorAll('.opacity-instructions-container')
 let c = 1;
+
 //floating name of category to choose from
 let float = ()=> {
    message0.classList.add('float-up')
@@ -110,10 +112,16 @@ function bannerAppear(){
    banner.classList.add('pointer-events-none')
    return
 }
-function scrollDownAppear(){
+function scrollDownDisappear(){
    scrollDown.classList.remove('opacity-1')
    scrollDown.classList.add('opacity-0')
    scrollDown.classList.add('pointer-events-none')
+   return
+}
+function scrollDownDisappear2(){
+   scrollDown2.classList.remove('opacity-1')
+   scrollDown2.classList.add('opacity-0')
+   scrollDown2.classList.add('pointer-events-none')
    return
 }
 function previewDisappear(){
@@ -140,16 +148,28 @@ function bannerDisappear(){
    banner.classList.add('opacity-1')
    return
 }
-function scrollDownDisappear(){
+function scrollDownAppear(){
    scrollDown.classList.add('opacity-1')
    scrollDown.classList.remove('opacity-0')
    scrollDown.classList.remove('pointer-events-none')
    return
 }
+function scrollDownAppear2(){
+   scrollDown2.classList.add('opacity-1')
+   scrollDown2.classList.remove('opacity-0')
+   scrollDown2.classList.remove('pointer-events-none')
+   return
+}
 function scrollDownFn(){
-   let target = section.getBoundingClientRect().y;
-   window.scrollTo(0,target); 
+   // let target = section.getBoundingClientRect().y;
+   let target = body.clientHeight;
+   window.scrollTo(0,target);
    
+}
+function scrollUpFn(){
+   // let target = section.getBoundingClientRect().y;
+   let target = body.clientHeight;
+   window.scrollTo(0,0);
    
 }
 function appear() {
@@ -244,7 +264,8 @@ e.preventDefault()
       if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
          disappear()
          unpressed()
-         scrollDownDisappear()
+         scrollDownAppear()
+         scrollDownAppear2()
          //pause video when you are out of bounds
          preview_arr.forEach((item, i) => {
             let video = item.children[0].children[0]
@@ -263,18 +284,6 @@ e.preventDefault()
 window.addEventListener('resize', e =>{
 let myWidth = e.target.innerWidth;
 let arr = [...nav_container.children[0].children]
-//on resize,target first & last navigation items.
-if(myWidth <= 1210){
-let temp = []
-arr.forEach((element,i)=>{
-   if(i === 0 || i === arr.length-1){
-      temp.push(element)
-   }
-})
-   temp.forEach(el=>{
-      nav_container.removeChild(el)
-      })
-   }
 })
 function pressed(li){
 li.classList.add('pressed')
@@ -291,7 +300,9 @@ nav_arr.forEach((li, i) => {
    li.addEventListener('mouseover', e => {
       unpressed()
       appear()
-      scrollDownAppear()
+      scrollDownDisappear()
+      scrollDownDisappear2()
+
       pressed(e.currentTarget)
       if (li === e.currentTarget) idx = i;
       message0.textContent = nav_arr[idx].children[0].textContent
