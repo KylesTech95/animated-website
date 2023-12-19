@@ -7,8 +7,8 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
     scroll-behavior: smooth;
 }
 button{
@@ -19,6 +19,49 @@ button{
     
 }
 
+
+.welcome-heading-container{
+    font-family: 'Dhurjati', sans-serif;
+    font-size:30px;
+    position:relative;
+
+}
+.wh-left-seq{
+    transform:translate(-2000px,0)
+}
+.wh-right-seq{
+    transform:translate(2000px,0)
+}
+.wh-centered-seq{
+    transform:translate(0,0)
+}
+
+
+#touch{
+    font-size:2rem;
+    transition:.3s;
+    position: absolute;
+    background:green;
+    padding:3rem; 
+    border-radius:50%; 
+    overflow:hidden; 
+    top:-2rem; 
+    width:100px;
+    height:100px;
+    border:4px solid red;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    right:-25%;
+}
+#touch-actual{
+    z-index:990;
+}
+
+
+/* #touch:hover{
+    transform:scale(1.25)
+} */
 .figCap{
     margin-top: 8px;
     font-size: 2rem;
@@ -113,14 +156,6 @@ transition:.3s;
 
 }
 
-.react,
-.tailwind{
-    font-family: 'Dhurjati', sans-serif;
-    font-size:2.5rem;
-    margin:.75rem 0;
-    letter-spacing: .75px;
-    text-transform: uppercase;
-}
 
 .wh,
 .social-container{
@@ -175,7 +210,7 @@ transition:.3s;
 }
 .test-video{
     object-fit: initial;
-    height: 275px;
+    height: 200px;
     border-radius:5%;
 }
 .preview-item:hover{
