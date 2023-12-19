@@ -28,38 +28,18 @@ let message0 = document.querySelector('.hidden-message0')
 let message = document.querySelector('.hidden-message')
 let instructions = document.querySelectorAll('.opacity-instructions-container')
 let c = 1;
-let d = 0;
-window.addEventListener('scroll', e => {
-   d++
-   console.log(window.scrollY)
+let arrowTest = document.querySelector('.down-arrow')
+let elementPos = arrowTest.getBoundingClientRect().y
+window.addEventListener('scroll', ()=> {
    // console.log(body.clientHeight)
-   let mid = body.clientHeight/2
-   // console.log(mid)
-   // if(window.scrollY > mid){
-   //    console.log('you hit me')
-   //    wh_all.forEach((header,i) => {
-   //       header.classList.remove('wh-centered-seq')
-   //       if(i%2==0){
-   //          wh_all[i].classList.add('wh-left-seq')
-   //       }
-   //       else{
-   //          wh_all[i].classList.add('wh-right-seq')
+   let target = body.clientHeight
+   let myY = window.scrollY
+   console.log(myY)
+      if(myY > elementPos && myY < elementPos+5){
+      window.scrollTo(0,target)
+      }
 
-   //       }
-   //    })
-   // }
-   // else{
-   //    wh_all.forEach((header,i) => {
-   //       header.classList.add('wh-centered-seq')
-   //       if(i%2==0){
-   //          wh_all[i].classList.remove('wh-left-seq')
-   //       }
-   //       else{
-   //          wh_all[i].classList.remove('wh-right-seq')
-
-   //       }
-   //    })
-   // }
+   
    wh_all.forEach((head,i)=>{
       if(i%2==0){
          head.style=`transform:translate(${window.scrollY}px,0);`
@@ -206,17 +186,15 @@ function scrollDownAppear2() {
    scrollDown2.classList.remove('pointer-events-none')
    return
 }
+
 function scrollDownFn() {
-   // let target = section.getBoundingClientRect().y;
    let target = body.clientHeight;
    window.scrollTo(0, target);
-
-
 }
 function scrollUpFn() {
-   // let target = section.getBoundingClientRect().y;
-   let target = body.clientHeight;
-   window.scrollTo(0, 0);
+   
+   let home = 0;
+   window.scrollTo(0, document.scrollTop);
 
 }
 function appear() {

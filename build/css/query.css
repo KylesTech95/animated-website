@@ -7,7 +7,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -107,6 +107,7 @@ button{
 .rotate:hover{
     transition: .25s ease;
     font-size: 4.5rem;
+    
 }
 .rotate2:hover{
     transition: .25s ease;
