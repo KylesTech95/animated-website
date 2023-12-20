@@ -16,13 +16,17 @@ button{
 }
 .down-arrow{
     font-size: 4rem;
-    
+}
+
+.gears-container2{
+    bottom:4rem;
 }
 
 
-.welcome-heading-container{
+.welcome-heading-container,
+.directives-list-container
+{
     font-family: 'Dhurjati', sans-serif;
-    font-size:30px;
     position:relative;
 
 }
@@ -37,37 +41,36 @@ button{
 }
 
 
+
 #touch{
-    font-size:2rem;
-    transition:.3s;
-    position: absolute;
-    background:green;
-    padding:3rem; 
-    border-radius:50%; 
-    overflow:hidden; 
-    top:-2rem; 
-    width:100px;
-    height:100px;
-    border:4px solid red;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-    right:-25%;
-}
-#touch-actual{
     z-index:990;
+    animation: pulsingText 2s alternate infinite ease-in-out;
+    opacity:1;
+}
+#touch:hover{
+    cursor:pointer;
+}
+@keyframes pulsingText {
+    from{
+        color: #000;
+    }
+    to{
+        color: rgb(255, 255, 255);
+    }
 }
 
-
-/* #touch:hover{
-    transform:scale(1.25)
-} */
 .figCap{
     margin-top: 8px;
     font-size: 2rem;
     font-family: 'Dhurjati', sans-serif;
 }
-
+.directives-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap:3rem;
+}
 .scroll-down-container{
     position: relative;
     width: 100vw;
@@ -78,6 +81,7 @@ button{
     justify-content: center;
     bottom: 15%;
     cursor: pointer;
+    margin-bottom:-5rem;
 }
 .scroll-down-container2{
     position: relative;
@@ -87,8 +91,9 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 20%;
+    top: 25%;
     cursor: pointer;
+    margin-top:-5rem;
 }
 .rotate{
     transform: rotate(-90deg);
@@ -137,24 +142,29 @@ button{
 .list-container>li>a{
     letter-spacing: 1.5px;
 }
-.message-appear{
-transform:scale(1.10);
+.message-appear,
+.fa-appear{
+transform:scale(1);
 opacity:1;
 transition:.3s;
 }
-.message-gone{
+.message-gone,
+.fa-gone{
     transform:scale(0);
     opacity:0;
     transition:.3s;
+}
+.fa{
+    margin: 0 3rem 0 0;
+    font-size:5rem;
 }
 .resources,
 .projects,
 .animation,
 .games,
 .backend{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'Dhurjati', sans-serif;
-
 }
 
 
@@ -211,7 +221,7 @@ transition:.3s;
 }
 .test-video{
     object-fit: initial;
-    height: 200px;
+    height: 300px;
     border-radius:5%;
 }
 .preview-item:hover{
@@ -223,7 +233,9 @@ box-shadow: 0 0 1rem .25px #333;
 #nav{
     opacity: .85;  
 }
-
+.wh{
+    font-size:3rem;
+}
 #nav>ul>li{
     transition:10;
 }
