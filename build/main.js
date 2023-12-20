@@ -344,8 +344,8 @@ function winMoveFn(type){
       if((mymouse.x < animation_x_pos+25 || mymouse.x > side.right) && body.clientWidth <= 750 && nav_container.classList.contains('nav-center')){
          console.log(nav_container.classList)
             nav_container.classList.remove('nav-center')
-            animation.style.animation = "none";
-            animation.style.left = 0;
+            animation.style = "animation:peek 1s ease-in-out infinite alternate";
+            animation.style.left = `-125px`;
             bannerAppear();
          if (!/nav-center/g.test(nav_container.classList.value)) {
             animation.style = "animation:peek 1s ease-in-out infinite alternate";

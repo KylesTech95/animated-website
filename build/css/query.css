@@ -362,7 +362,9 @@ box-shadow: 0 0 1rem .25px #333;
         width: 100%;
         flex-wrap: nowrap;
     }
-    
+    body{
+        overflow-x:hidden;
+    }
     .btn-press{
         display: block;
         position: fixed;
