@@ -317,45 +317,52 @@ function mouse_over_out() {
    })
 }
 //backround appear/disappear mousemove event
-window.addEventListener('mousemove', e => {
-   e.preventDefault()
-   mymouse = { x: e.pageX, y: e.pageY }
-   //convert mous's px to decimal by dividing by 1000
-   let quotient = mymouse.x / 1000
-
-   //If mouse.x <= half the screen, opacity changes  
-   if (mymouse.x <= half_width) {
-      gears.forEach(x => {
-         x.style = `opacity:${quotient}`
-      })
-   }
-   else {
-      //else, redefine quotient as the full width/1000 - original quotient
-      quotient = (body.clientWidth / 1000) - quotient
-      gears.forEach(x => {
-         x.style = `opacity:${quotient}`
-      })
-   }
-
-   //if the user moves their mouse outside of the preview pane and/or nav-items(resources or back-end)
-   if (body.clientWidth > 600) {
-      if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
-         disappear()
-         unpressed()
-         //pause video when you are out of bounds
-         preview_arr.forEach((item, i) => {
-            let video = item.children[0].children[0]
-            let source = video.children[0]
-
+winTypes = ['mousemove','touchmove']
+function winMoveFn(type){
+   window.addEventListener(type, e => {
+      e.preventDefault()
+      mymouse = { x: e.pageX, y: e.pageY }
+      //convert mous's px to decimal by dividing by 1000
+      let quotient = mymouse.x / 1000
+   
+      //If mouse.x <= half the screen, opacity changes  
+      if (mymouse.x <= half_width) {
+         gears.forEach(x => {
+            x.style = `opacity:${quotient}`
          })
       }
-
-      //If the preview pane is visible, remove restricted pointer event-none
-      if (preview.classList.contains('opacity-1')) {
-         preview.classList.remove('pointer-events-none')
+      else {
+         //else, redefine quotient as the full width/1000 - original quotient
+         quotient = (body.clientWidth / 1000) - quotient
+         gears.forEach(x => {
+            x.style = `opacity:${quotient}`
+         })
       }
-   }
+   
+      //if the user moves their mouse outside of the preview pane and/or nav-items(resources or back-end)
+      if (body.clientWidth > 600) {
+         if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
+            disappear()
+            unpressed()
+            //pause video when you are out of bounds
+            preview_arr.forEach((item, i) => {
+               let video = item.children[0].children[0]
+               let source = video.children[0]
+   
+            })
+         }
+   
+         //If the preview pane is visible, remove restricted pointer event-none
+         if (preview.classList.contains('opacity-1')) {
+            preview.classList.remove('pointer-events-none')
+         }
+      }
+   })
+}
+winTypes.forEach(type=>{
+   winMoveFn(type)
 })
+
 let sizer = document.querySelector('.resize-txt')
 window.addEventListener('resize',e=>{
    sizer.textContent = e.target.innerWidth
@@ -370,31 +377,51 @@ function unpressed() {
       li.classList.remove('pressed')
    })
 }
+types = ['mousemove','touchstart','click']
+
 //assigning video sources depending on nav-list-items
+function navTouchTypes(li,type,idx,i){
+   li.addEventListener(type, e => {
+      unpressed()
+      appear()
+      pressed(e.currentTarget)
+      if (li === e.currentTarget) idx = i;
+      message0.textContent = nav_arr[idx].children[0].textContent
+      preview_arr.forEach(item => {
+         let source = item.children[0].children[0]
+         source.src !== undefined ? source.src = media[idx] : source.src = ''
+      })
+   })
+}
+
 nav_arr.forEach((li, i) => {
    let idx;
-   li.addEventListener('mouseover', e => {
-      unpressed()
-      appear()
-      pressed(e.currentTarget)
-      if (li === e.currentTarget) idx = i;
-      message0.textContent = nav_arr[idx].children[0].textContent
-      preview_arr.forEach(item => {
-         let source = item.children[0].children[0]
-         source.src !== undefined ? source.src = media[idx] : source.src = ''
-      })
+   types.forEach((type,index)=>{
+      navTouchTypes(li,type,idx,i)
    })
-   li.addEventListener('click', e => {
-      unpressed()
-      appear()
-      pressed(e.currentTarget)
-      if (li === e.currentTarget) idx = i;
-      message0.textContent = nav_arr[idx].children[0].textContent
-      preview_arr.forEach(item => {
-         let source = item.children[0].children[0]
-         source.src !== undefined ? source.src = media[idx] : source.src = ''
-      })
-   })
+   
+   // li.addEventListener('mouseover', e => {
+   //    unpressed()
+   //    appear()
+   //    pressed(e.currentTarget)
+   //    if (li === e.currentTarget) idx = i;
+   //    message0.textContent = nav_arr[idx].children[0].textContent
+   //    preview_arr.forEach(item => {
+   //       let source = item.children[0].children[0]
+   //       source.src !== undefined ? source.src = media[idx] : source.src = ''
+   //    })
+   // })
+   // li.addEventListener('click', e => {
+   //    unpressed()
+   //    appear()
+   //    pressed(e.currentTarget)
+   //    if (li === e.currentTarget) idx = i;
+   //    message0.textContent = nav_arr[idx].children[0].textContent
+   //    preview_arr.forEach(item => {
+   //       let source = item.children[0].children[0]
+   //       source.src !== undefined ? source.src = media[idx] : source.src = ''
+   //    })
+   // })
 })
 //appearing video on mouseover
 //disappearing video on mouseout
