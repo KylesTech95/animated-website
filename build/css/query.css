@@ -79,7 +79,7 @@ button{
 }
 .scroll-down-container{
     position: relative;
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ button{
 }
 .scroll-down-container2{
     position: relative;
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
