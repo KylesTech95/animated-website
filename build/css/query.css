@@ -7,7 +7,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    overflow-x: hidden;
+    overflow: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
     width:100%;
@@ -366,7 +366,6 @@ box-shadow: 0 0 1rem .25px #333;
     body{
         max-width:100%;
         min-width:100%;
-        overflow-x:hidden;
     }
     .btn-press{
 
