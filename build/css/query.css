@@ -293,6 +293,11 @@ box-shadow: 0 0 1rem .25px #333;
     body{
         width:100%;
         overflow-x:hidden;
+        -webkit-overflow-x:hidden;
+        -moz-overflow-x:hidden;
+        -o-overflow-x:hidden;
+
+
     }
    
    
