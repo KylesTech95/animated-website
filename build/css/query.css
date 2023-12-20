@@ -11,6 +11,8 @@ body{
     overflow-y: auto;
     scroll-behavior: smooth;
     width:100%;
+    max-width:100%;
+    min-width:100%;
 }
 button{
     z-index:995
@@ -241,7 +243,6 @@ box-shadow: 0 0 1rem .25px #333;
 }
 #nav{
     opacity: .85;  
-    width:100vw;
 }
 .wh{
     font-size:3rem;
@@ -363,6 +364,8 @@ box-shadow: 0 0 1rem .25px #333;
         flex-wrap: nowrap;
     }
     body{
+        max-width:100%;
+        min-width:100%;
         overflow-x:hidden;
     }
     .btn-press{
