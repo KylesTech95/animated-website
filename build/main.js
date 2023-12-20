@@ -214,13 +214,16 @@ function bannerAppear() {
 }
 //banner disappear
 function bannerDisappear() {
-   banner.classList.remove('pointer-events-none')
-   banner.classList.remove('opacity-0')
-   banner.classList.add('opacity-1')
-   banner2.classList.remove('pointer-events-none')
-   banner2.classList.remove('opacity-0')
-   banner2.classList.add('opacity-1')
-   return
+   setTimeout(()=>{
+      banner.classList.remove('pointer-events-none')
+      banner.classList.remove('opacity-0')
+      banner.classList.add('opacity-1')
+      banner2.classList.remove('pointer-events-none')
+      banner2.classList.remove('opacity-0')
+      banner2.classList.add('opacity-1')
+      return
+   },500)
+   
 }
 //scroll-helper (bottom of 1st section) appears
 function scrollDownAppear() {
