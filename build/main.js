@@ -31,6 +31,11 @@ let instructions = document.querySelectorAll('.opacity-instructions-container')
 let c = 1;
 let arrowTest = document.querySelector('.down-arrow')
 let elementPos = arrowTest.getBoundingClientRect().y
+let myText = ['User-friendly & easy to use web solutions','Code refactoring/Bug fixin','Learn to code with me']
+
+$(document).ready(function() {
+  scrollTo(0,0);
+})
 window.addEventListener('scroll', ()=> {
    c+=1
    wh_all.forEach((head,i)=>{
@@ -53,24 +58,35 @@ window.addEventListener('scroll', ()=> {
 
    })
 
-
  if(window.scrollY >= window.innerHeight-1){
-   directives.forEach((dir,i)=>{
-      let icon = dir.children[0]
-      setTimeout(()=>{
-         icon.classList.remove('fa-gone')
-         icon.classList.add('fa-appear')
-      },500*(i+1))
+      directives.forEach((dir,i)=>{
+         let icon = dir.children[0]
+         let textActual = dir.children[1]
+         if(icon.classList.contains('fa-gone')){
+           setTimeout(()=>{
+               icon.classList.remove('fa-gone')
+               icon.classList.add('fa-appear')
+               autoTextFn(myText[i],textActual)
+         },1000*(i+1)) 
+         }
+         
    })
+   
+      
  }
  if(window.scrollY <= window.innerHeight/3){
    directives.forEach((dir,i)=>{
       let icon = dir.children[0]
+      let textActual = dir.children[1]
+      if(icon.classList.contains('fa-appear')){
       setTimeout(()=>{
          icon.classList.add('fa-gone')
          icon.classList.remove('fa-appear')
-      },150*(i+1))
-   })
+         textActual.textContent = ''
+      },500*(i+1))
+   }
+})
+   
  }
  
 
@@ -85,9 +101,6 @@ let section = document.querySelector('.blank-container')
 wh_all.forEach(header => {
    header.classList.add('wh-centered-seq')
 })
-// directives.forEach(dir=>{
-//    dir.classList.add('wh-centered-seq')
-// })
 
 //Keydown that detects the "Tab" key & disables every element when pressing "Tab"
 window.addEventListener('keydown', e => {
@@ -113,11 +126,6 @@ instructions.forEach((ins, i) => {
    }, 750 * (i + 1))
 })
 
-//Function list
-//function to force scroll to start at top(Jquery)
-// $(document).ready(function () {
-//    $(this).scrollTop(0)
-// });
 function noPointer() {
    body.classList.add('pointer-events-none')
 }

@@ -22,7 +22,11 @@ button{
     bottom:4rem;
 }
 
-
+.directive{
+    display:flex;
+    align-items: center;
+    justify-content: center ;
+}
 .welcome-heading-container,
 .directives-list-container
 {
