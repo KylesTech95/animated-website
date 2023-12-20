@@ -35,7 +35,7 @@ let c = 1;
 let acc = 0;
 let arrowTest = document.querySelector('.down-arrow')
 let elementPos = arrowTest.getBoundingClientRect().y
-let myText = ['User-friendly & easy to use web solutions','Code refactoring/Bug fixin','Learn to code with me']
+let myText = ['User-friendly & easy to use web solutions','Code refactoring/Bug fixing','Learn to code with me']
 let section = document.querySelector('.blank-container')
 //Disable tab for every element present
 document.querySelectorAll('*').forEach(element => element.setAttribute('notab', 'notab'))
@@ -320,7 +320,6 @@ function mouse_over_out() {
 winTypes = ['mousemove','touchmove']
 function winMoveFn(type){
    window.addEventListener(type, e => {
-      e.preventDefault()
       mymouse = { x: e.pageX, y: e.pageY }
       //convert mous's px to decimal by dividing by 1000
       let quotient = mymouse.x / 1000
@@ -338,19 +337,37 @@ function winMoveFn(type){
             x.style = `opacity:${quotient}`
          })
       }
+      
+      //mobile version
+      let animation = document.getElementById('btn-pressID')
+      animation_x_pos = animation.getBoundingClientRect().x
+      if((mymouse.x < animation_x_pos+25 || mymouse.x > side.right) && body.clientWidth <= 750 && nav_container.classList.contains('nav-center')){
+         console.log(nav_container.classList)
+            nav_container.classList.remove('nav-center')
+            animation.style.animation = "none";
+            animation.style.left = 0;
+            bannerAppear();
+         if (!/nav-center/g.test(nav_container.classList.value)) {
+            animation.style = "animation:peek 1s ease-in-out infinite alternate";
+            animation.style.left = `-125px`;
+            bannerDisappear()
+         }
+         
+        
+      }
    
       //if the user moves their mouse outside of the preview pane and/or nav-items(resources or back-end)
-      if (body.clientWidth > 600) {
          if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
             disappear()
             unpressed()
+            
             //pause video when you are out of bounds
             preview_arr.forEach((item, i) => {
                let video = item.children[0].children[0]
                let source = video.children[0]
-   
+               
             })
-         }
+         
    
          //If the preview pane is visible, remove restricted pointer event-none
          if (preview.classList.contains('opacity-1')) {
@@ -434,6 +451,7 @@ function navFn() {
       animation.style.animation = "none";
       animation.style.left = 0;
       bannerAppear();
+      previewDisappear()
    }
    if (!/nav-center/g.test(nav_container.classList.value)) {
       animation.style = "animation:peek 1s ease-in-out infinite alternate";
