@@ -20,17 +20,17 @@
     <title>Document</title>
 </head>
 
-<body class="h-screen w-screen bg-gray-300 font-serif container" id="bod">
+<body class="h-screen w-screen bg-gradient-to-br from-blue-900 via-purple-300 to-pink-300 font-serif container" id="bod">
 
     <!--Gear-background-->
     <div class="gears-container gears-bg gears absolute w-screen z-0 pointer-events-none">
         <div class="test mt-40 absolute left-20 opacity-75">
-            <span class="material-symbols-outlined settings1 pointer-events-none animate-rotation m-0 text-gray-400">
+            <span class="material-symbols-outlined  settings1 pointer-events-none animate-rotation m-0 text-gray-400">
                 settings
             </span>
         </div>
         <div class="test absolute right-20 opacity-50">
-            <span class="material-symbols-outlined settings2 pointer-events-none animate-reverse m-0 text-gray-400">
+            <span class="material-symbols-outlined  settings2 pointer-events-none animate-reverse m-0 text-gray-400">
                 settings
             </span>
         </div>
@@ -110,7 +110,19 @@
             </div>
     </section>
     
-
+<!--Gear-background-->
+<div class="gears-container2 gears-bg gears absolute w-screen z-0 pointer-events-none">
+    <div class="test absolute left-20 opacity-50">
+        <span class="material-symbols-outlined settings2 pointer-events-none animate-reverse m-0 text-gray-400">
+            settings
+        </span>
+    </div>
+    <div class="test mt-40 absolute right-20 opacity-75">
+        <span class="material-symbols-outlined settings1 pointer-events-none animate-rotation m-0 text-gray-400">
+            settings
+        </span>
+    </div>
+</div>
     <!--------------------------------------------------------------->
     <section id="banner" class="opacity-1 w-screen h-screen flex flex-col justify-center items-center">
         <div class="welcome-container flex flex-col justify-center items-center">
@@ -172,8 +184,14 @@
     </div>
 
 <!--------------------------------------------------------------->
-    <section class="blank-container h-screen w-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-900">
-        
+    <section class="blank-container h-screen w-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-900 flex flex-col justify-center items-center">
+        <div id="baner2">
+            <ul class="directives-list-container">
+                <li class="wh directive wh-left-seq duration-1000">User-friendly & easy to use web solutions</li>
+                <li class="wh directive wh-right-seq duration-1000">Code refactoring/Bug fixing</li>
+                <li class="wh directive wh-left-seq">Learn code with me</li>
+            </ul>
+        </div>
     </section>
 </body>
 <script src="main.js">

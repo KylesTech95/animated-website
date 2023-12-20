@@ -22,6 +22,7 @@ let side = {
    left: preview_daddy.getBoundingClientRect().x,
    right: preview_daddy.getBoundingClientRect().x + preview_daddy.getBoundingClientRect().width
 }
+let directives = document.querySelectorAll('.directive')
 let preview_href = document.querySelectorAll('section>div>div>ul>li>a')
 let major_src;
 let message0 = document.querySelector('.hidden-message0')
@@ -31,15 +32,7 @@ let c = 1;
 let arrowTest = document.querySelector('.down-arrow')
 let elementPos = arrowTest.getBoundingClientRect().y
 window.addEventListener('scroll', ()=> {
-   // console.log(body.clientHeight)
-   let target = body.clientHeight
-   let myY = window.scrollY
-   console.log(myY)
-      if(myY > elementPos && myY < elementPos+5){
-      window.scrollTo(0,target)
-      }
-
-   
+   c+=1
    wh_all.forEach((head,i)=>{
       if(i%2==0){
          head.style=`transform:translate(${window.scrollY}px,0);`
@@ -48,6 +41,16 @@ window.addEventListener('scroll', ()=> {
          head.style=`transform:translate(${window.scrollY*-1}px,0);`
 
       }
+   })
+   directives.forEach((dir,i)=>{
+      if(i%2==0){
+         dir.style=`transform:translate(${(window.scrollY-body.clientHeight)}px,0);`
+      }
+      else{
+         dir.style=`transform:translate(${((window.scrollY-body.clientHeight)*-1)}px,0);`
+
+      }
+
    })
 
 })
@@ -61,6 +64,9 @@ let section = document.querySelector('.blank-container')
 wh_all.forEach(header => {
    header.classList.add('wh-centered-seq')
 })
+// directives.forEach(dir=>{
+//    dir.classList.add('wh-centered-seq')
+// })
 
 //Keydown that detects the "Tab" key & disables every element when pressing "Tab"
 window.addEventListener('keydown', e => {
@@ -88,9 +94,9 @@ instructions.forEach((ins, i) => {
 
 //Function list
 //function to force scroll to start at top(Jquery)
-$(document).ready(function () {
-   $(this).scrollTop(0)
-});
+// $(document).ready(function () {
+//    $(this).scrollTop(0)
+// });
 function noPointer() {
    body.classList.add('pointer-events-none')
 }
@@ -283,9 +289,14 @@ window.addEventListener('mousemove', e => {
          x.style = `opacity:${quotient}`
       })
    }
-   //unique Touch animation
+
+let tCount = 0;
    if((mymouse.x < touchContainer.getBoundingClientRect().x+touchContainer.getBoundingClientRect().width && mymouse.x > touchContainer.getBoundingClientRect().x)&&(mymouse.y < touchContainer.getBoundingClientRect().y+touchContainer.getBoundingClientRect().height && mymouse.y > touchContainer.getBoundingClientRect().y)){
-      touchActual.style=`position:absolute;transform:translate(${acc++}px,0);`
+      touchActual.style='color:lime;transition:.3s;font-size:4rem;text-shadow:1px 1px 4px black;cursor:pointer;animation:none;'
+   }
+   else{
+      touchActual.style='color:#333;transition:.3s;font-size:2rem;'
+
    }
    //if the user moves their mouse outside of the preview pane and/or nav-items(html or Js)
    if (body.clientWidth > 600) {
@@ -344,4 +355,4 @@ nav_arr.forEach((li, i) => {
 //disappearing video on mouseout
 mouse_over_out()
 
-//touch event "touch"
+
