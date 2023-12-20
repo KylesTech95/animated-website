@@ -321,7 +321,7 @@ box-shadow: 0 0 1rem .25px #333;
         font-size:2rem;
     }
     .list-container>li>a{
-        font-size:1rem;
+        font-size:2rem;
     }
     .gears-container{
         top:8rem;
@@ -366,10 +366,12 @@ box-shadow: 0 0 1rem .25px #333;
         overflow-x:hidden;
     }
     .btn-press{
+
         display: block;
         position: fixed;
-        top:f 0;
-        left: -125px;
+        top:0;
+        left: -75px;
+        border-radius:0 12px 12px 0;
         animation: peek 1s ease-in-out infinite alternate;
     }
     /*Section preciew items */
@@ -378,7 +380,7 @@ box-shadow: 0 0 1rem .25px #333;
         transform: translate(0,0)
     }
     100%{
-        transform: translate(90px,0)
+        transform: translate(50px,0)
     }
 }
 
