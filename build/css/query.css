@@ -10,6 +10,7 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
+    width:100vw;
 }
 button{
     z-index:995
@@ -69,11 +70,12 @@ button{
     font-family: 'Dhurjati', sans-serif;
 }
 .directives-list-container{
+    margin-top:4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: start;
-    gap:3rem;
+    gap:1rem;
 }
 .scroll-down-container{
     position: relative;
@@ -145,6 +147,10 @@ button{
 }
 .list-container>li>a{
     letter-spacing: 1.5px;
+}
+.list-container{
+    border:3px solid purple;
+    flex-wrap:wrap;
 }
 .message-appear,
 .fa-appear{
@@ -221,7 +227,7 @@ transition:.3s;
 }
 .float-up{
     transition: .3s ease;
-    transform: translate(0,-250px)
+    transform: translate(0,-200px)
 }
 .test-video{
     object-fit: initial;
@@ -236,6 +242,7 @@ box-shadow: 0 0 1rem .25px #333;
 }
 #nav{
     opacity: .85;  
+    width:100vw;
 }
 .wh{
     font-size:3rem;
@@ -257,16 +264,48 @@ box-shadow: 0 0 1rem .25px #333;
 }
 
 @media screen and (max-width: 1075px){
+    .opacity-instructions-container{
+        display:none;
+    }
     .settings1,
     .settings2{
         font-size: 30rem 
+        
+    }
+    .wh{
+        font-size:2.25rem;
     }
 }
+/*ipad/tablet*/
 @media screen and (max-width: 875px){
     .settings1,
     .settings2{
-        font-size: 25rem 
+        font-size: 20rem;
     }
+    .float-up{
+        transition: .3s ease;
+        transform: translate(0,-125px)
+    }
+    body{
+        width:100%;
+        overflow-x:hidden;
+    }
+    /* #nav{
+        background:red;
+    } */
+    
+    .list-container>li>a{
+        letter-spacing: .5px;
+    }
+    #nav{
+        min-width:700px;
+        width:100%;
+        flex-wrap:wrap;
+    }
+    #banner{
+        margin-top:4rem;
+    }
+
 }
 @media screen and (max-width: 600px){
     
