@@ -35,7 +35,7 @@ let c = 1;
 let acc = 0;
 let arrowTest = document.querySelector('.down-arrow')
 let elementPos = arrowTest.getBoundingClientRect().y
-let myText = ['User-friendly & easy to use web solutions','Code refactoring/Bug fixing','Learn to code with me']
+let myText = ['User-friendly & easy to use web solutions','Code refactoring/Bug fixing','Learn code with me']
 let section = document.querySelector('.blank-container')
 //Disable tab for every element present
 document.querySelectorAll('*').forEach(element => element.setAttribute('notab', 'notab'))
