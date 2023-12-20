@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/4026a653d4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -58,12 +59,12 @@
         Me</button>
     <!--preview pane (list of videos)-->
     <section class="fixed top-28 flex-control w-screen h-screen flex flex-col justify-center items-center mt-4">
-            <div id="preview" class="opacity-0 html-preview pointer-events-none w-4/5 flex flex-col justify-center items-center relative">
+            <div id="preview" class="h-screen opacity-0 html-preview pointer-events-none w-4/5 flex flex-col justify-center items-center relative">
                 <h2 class="opacity-0 hidden-message0 absolute message-gone text-gray-500"></h2>
                 <h2 class="opacity-0 hidden-message absolute message-gone text-red-500">hover</h2>
                 <div class="preview-container-daddy w-full h-full mb-20">
                     <ul id="nav_in" class="preview-container html-container mb-12">
-                        <li class="preview-item cursor-pointer">
+                        <!-- <li class="preview-item cursor-pointer">
                             <a href=""class="preview-link flex flex-col justify-center items-center">
                                 <video class="test-video opacity-0 duration-300" width="75%" loop>
                                     <source src="">
@@ -104,7 +105,7 @@
                                     <source src="">
                                 </video>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -132,7 +133,7 @@
                     <h1 class="wh welcome-heading text-center text-lg wh-left-seq">welcome</h1>
                 </div>
                 <div class="wh-div">
-                    <h2 class="wh welcome-subheading1 text-center wh-right-seq">I design webflow solutions with a creative & unique<span id="touch"><div id="touch-actual">touch</div></span>
+                    <h2 class="wh welcome-subheading1 text-center wh-right-seq">I design webflow solutions with a creative & unique<span id="touch"> touch</span>
                     </h2>
                 </div>
                 <div class="wh-div">
@@ -185,11 +186,11 @@
 
 <!--------------------------------------------------------------->
     <section class="blank-container h-screen w-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-900 flex flex-col justify-center items-center">
-        <div id="baner2">
+        <div id="banner2">
             <ul class="directives-list-container">
-                <li class="wh directive wh-left-seq duration-1000">User-friendly & easy to use web solutions</li>
-                <li class="wh directive wh-right-seq duration-1000">Code refactoring/Bug fixing</li>
-                <li class="wh directive wh-left-seq">Learn code with me</li>
+                <li class="wh directive wh-left-seq"><i class="fa-regular fa-lightbulb fa fa-gone"></i>User-friendly & easy to use web solutions</li>
+                <li class="wh directive wh-right-seq"><i class="fa-solid fa-screwdriver fa fa-gone"></i>Code refactoring/Bug fixing</li>
+                <li class="wh directive wh-left-seq"><i class="fa-solid fa-video fa fa-gone"></i>Learn code with me</li>
             </ul>
         </div>
     </section>

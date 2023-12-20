@@ -41,26 +41,21 @@ button{
 }
 
 
-#touch{
-    font-size:2rem;
-    transition:.3s;
-    position: absolute;
-    padding:3rem; 
-    border-radius:50%; 
 
-}
-#touch-actual{
+#touch{
     z-index:990;
     animation: pulsingText 2s alternate infinite ease-in-out;
     opacity:1;
-
+}
+#touch:hover{
+    cursor:pointer;
 }
 @keyframes pulsingText {
     from{
         color: #000;
     }
     to{
-        color: green;
+        color: rgb(255, 255, 255);
     }
 }
 
@@ -73,7 +68,7 @@ button{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     gap:3rem;
 }
 .scroll-down-container{
@@ -147,15 +142,21 @@ button{
 .list-container>li>a{
     letter-spacing: 1.5px;
 }
-.message-appear{
-transform:scale(1.10);
+.message-appear,
+.fa-appear{
+transform:scale(1);
 opacity:1;
 transition:.3s;
 }
-.message-gone{
+.message-gone,
+.fa-gone{
     transform:scale(0);
     opacity:0;
     transition:.3s;
+}
+.fa{
+    margin: 0 3rem 0 0;
+    font-size:5rem;
 }
 .resources,
 .projects,
@@ -220,7 +221,7 @@ transition:.3s;
 }
 .test-video{
     object-fit: initial;
-    height: 200px;
+    height: 300px;
     border-radius:5%;
 }
 .preview-item:hover{

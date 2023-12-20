@@ -3,9 +3,9 @@ let half_window = body.clientWidth / 2
 let half_height = body.clientHeight / 2
 let mymouse = { x: undefined, y: undefined };
 let banner = document.getElementById('banner')
+let banner2 = document.getElementById('banner2')
 let gears = document.querySelectorAll('span')
 let touchContainer = document.getElementById('touch')
-let touchActual = document.getElementById('touch-actual')
 let nav_container = document.querySelector('#nav')
 let tailwind_left = document.querySelector('.li1').getBoundingClientRect().x
 let react_right = document.querySelector('.li5').getBoundingClientRect().x + document.querySelector('.li5').getBoundingClientRect().width
@@ -52,6 +52,27 @@ window.addEventListener('scroll', ()=> {
       }
 
    })
+
+
+ if(window.scrollY >= window.innerHeight-1){
+   directives.forEach((dir,i)=>{
+      let icon = dir.children[0]
+      setTimeout(()=>{
+         icon.classList.remove('fa-gone')
+         icon.classList.add('fa-appear')
+      },500*(i+1))
+   })
+ }
+ if(window.scrollY <= window.innerHeight/3){
+   directives.forEach((dir,i)=>{
+      let icon = dir.children[0]
+      setTimeout(()=>{
+         icon.classList.add('fa-gone')
+         icon.classList.remove('fa-appear')
+      },150*(i+1))
+   })
+ }
+ 
 
 })
 //floating name of category to choose from
@@ -142,6 +163,9 @@ function bannerAppear() {
    banner.classList.remove('opacity-1')
    banner.classList.add('opacity-0')
    banner.classList.add('pointer-events-none')
+   banner2.classList.remove('opacity-1')
+   banner2.classList.add('opacity-0')
+   banner2.classList.add('pointer-events-none')
    return
 }
 function scrollDownDisappear() {
@@ -178,6 +202,9 @@ function bannerDisappear() {
    banner.classList.remove('pointer-events-none')
    banner.classList.remove('opacity-0')
    banner.classList.add('opacity-1')
+   banner2.classList.remove('pointer-events-none')
+   banner2.classList.remove('opacity-0')
+   banner2.classList.add('opacity-1')
    return
 }
 function scrollDownAppear() {
@@ -290,14 +317,6 @@ window.addEventListener('mousemove', e => {
       })
    }
 
-let tCount = 0;
-   if((mymouse.x < touchContainer.getBoundingClientRect().x+touchContainer.getBoundingClientRect().width && mymouse.x > touchContainer.getBoundingClientRect().x)&&(mymouse.y < touchContainer.getBoundingClientRect().y+touchContainer.getBoundingClientRect().height && mymouse.y > touchContainer.getBoundingClientRect().y)){
-      touchActual.style='color:lime;transition:.3s;font-size:4rem;text-shadow:1px 1px 4px black;cursor:pointer;animation:none;'
-   }
-   else{
-      touchActual.style='color:#333;transition:.3s;font-size:2rem;'
-
-   }
    //if the user moves their mouse outside of the preview pane and/or nav-items(html or Js)
    if (body.clientWidth > 600) {
       if (preview.classList.contains('opacity-1') && ((mymouse.x < side.left || mymouse.x > side.right) || (mymouse.y < 105 && (mymouse.x < tailwind_left || mymouse.x > react_right)))) {
