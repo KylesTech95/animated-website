@@ -317,7 +317,7 @@ function mouse_over_out() {
    })
 }
 //backround appear/disappear mousemove event
-winTypes = ['mousemove','touchmove']
+winTypes = ['mousemove']
 function winMoveFn(type){
    window.addEventListener(type, e => {
       mymouse = { x: e.pageX, y: e.pageY }
