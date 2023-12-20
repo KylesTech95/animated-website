@@ -10,7 +10,7 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
-    width:100vw;
+    width:100%;
 }
 button{
     z-index:995
@@ -290,15 +290,7 @@ box-shadow: 0 0 1rem .25px #333;
         transition: .3s ease;
         transform: translate(0,-125px)
     }
-    body{
-        width:100%;
-        overflow-x:hidden;
-        -webkit-overflow-x:hidden;
-        -moz-overflow-x:hidden;
-        -o-overflow-x:hidden;
-
-
-    }
+    
    
    
     .list-container>li>a{
