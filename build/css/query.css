@@ -303,12 +303,14 @@ box-shadow: 0 0 1rem .25px #333;
         flex-wrap:wrap;
     }
     #banner{
-        margin-top:4rem;
+        margin-top:6rem;
     }
 
 }
 @media screen and (max-width: 600px){
-    
+    .wh{
+        font-size:2rem;
+    }
     .gears-container{
         top:8rem;
     }
