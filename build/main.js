@@ -192,9 +192,8 @@ function scrollDownFn() {
    window.scrollTo(0, target);
 }
 function scrollUpFn() {
-   
-   let home = 0;
-   window.scrollTo(0, document.scrollTop);
+   let home = document.scrollTop;
+   window.scrollTo(0, home);
 
 }
 function appear() {
