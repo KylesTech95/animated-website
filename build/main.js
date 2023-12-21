@@ -59,16 +59,20 @@ function scrollTextToCenter(){
    })
    directives.forEach((dir,index)=>{
       if(index%2==0){
-         dir.style=`transform:translate(${(window.scrollY-body.clientHeight)}px,0);`
+         dir.classList.remove('wh-center-seq')
+         dir.classList.add('wh-left-seq')
+         dir.style=`transform:translate(${((window.scrollY-body.clientHeight))+750}px,0);`
       }
       else{
-         dir.style=`transform:translate(${((window.scrollY-body.clientHeight)*-1)}px,0);`
+         dir.classList.remove('wh-center-seq')
+         dir.classList.add('wh-right-seq')
+         dir.style=`transform:translate(${((window.scrollY-body.clientHeight)*-1)-750}px,0);`
 
       }
 
    })
-//When scrollY meets bottom of page, directives/icons appear
-   if(window.scrollY >= body.clientHeight){
+// When scrollY meets bottom of page, directives/icons appear
+   if(window.scrollY >= ((section.getBoundingClientRect().y+section.getBoundingClientRect().height))){
       directives.forEach((dir,i)=>{
          let icon = dir.children[0]
          let textActual = dir.children[1]
@@ -85,8 +89,8 @@ function scrollTextToCenter(){
    })
       
          
-   }
-   //When scrollY meets 3/4 of page, directives/icons disappear
+ }
+//    //When scrollY meets 3/4 of page, directives/icons disappear
    if(window.scrollY <= window.innerHeight/3){
       directives.forEach((dir,i)=>{
          let icon = dir.children[0]
@@ -101,7 +105,7 @@ function scrollTextToCenter(){
       
    }
  
-} 
+ } 
 window.addEventListener('scroll',scrollTextToCenter)
 
 wh_all.forEach(header => {

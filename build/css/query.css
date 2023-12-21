@@ -1,13 +1,12 @@
 *{
     margin:0;
     padding:0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 html{
     scroll-behavior: smooth;
 }
 body{
-    overflow: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
     width:100%;
@@ -80,16 +79,15 @@ button{
     gap:1rem;
 }
 .scroll-down-container{
-    position: relative;
+    position: absolute;
     width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 15%;
+    bottom: 5%;
     cursor: pointer;
-    margin-bottom:-5rem;
 }
 .scroll-down-container2{
     position: relative;
@@ -99,9 +97,8 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 25%;
+    top: 0;
     cursor: pointer;
-    margin-top:-5rem;
 }
 .rotate{
     transform: rotate(-90deg);
@@ -308,11 +305,15 @@ box-shadow: 0 0 1rem .25px #333;
 }
 
 
-@media screen and (max-width: 750px)and (max-height:820px){
+@media screen and (max-width: 750px) and (max-height:820px){
     .hidden-message0{
         transition: .3s;
         font-size: 4rem;
         opacity:.5;
+    }
+    body,html{
+        overflow:hidden;
+        overflow-y:auto;
     }
     .fa{
         margin: 0 1rem 0 0;
@@ -363,10 +364,7 @@ box-shadow: 0 0 1rem .25px #333;
         width: 100%;
         flex-wrap: nowrap;
     }
-    body{
-        max-width:100%;
-        min-width:100%;
-    }
+   
     .btn-press{
 
         display: block;
