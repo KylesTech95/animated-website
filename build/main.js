@@ -6,7 +6,7 @@ let half_height = body.clientHeight / 2
 
 let banner = document.getElementById('banner')
 let banner2 = document.getElementById('banner2')
-
+let togBtn = document.querySelector('.toggleNight')
 let gears = document.querySelectorAll('span')
 let touchContainer = document.getElementById('touch')
 let nav_container = document.querySelector('#nav')
@@ -44,6 +44,15 @@ $(document).ready(function() {
 //The user is directed to the top of the page on refresh
   scrollTo(0,0);
 })
+function toggleNight(){
+   nav_container.classList.toggle('bg-black')
+   nav_container.classList.toggle('text-white')
+   nav_arr.forEach(li=>{
+      li.classList.toggle('hover:bg-gray-700')
+      
+   })
+
+}
 //Translate banner text on scroll
 function scrollTextToCenter(){
 
@@ -91,14 +100,14 @@ function scrollTextToCenter(){
          
  }
 //    //When scrollY meets 3/4 of page, directives/icons disappear
-   if(window.scrollY <= window.innerHeight/3){
+   if(window.scrollY <= body.clientHeight/3){
       directives.forEach((dir,i)=>{
          let icon = dir.children[0]
          let textActual = dir.children[1]
+         textActual.textContent=''
          if(icon.classList.contains('fa-appear')){
             icon.classList.add('fa-gone')
             icon.classList.remove('fa-appear')
-            textActual.textContent = ''
       }
    })
       
@@ -144,7 +153,6 @@ function hiPointer() {
 }
 //auto type with 2 arguments:1)string of text,2)element.
 function autoTextFn(text, element) {
-   noPointer()
    text = [...text]//text.split``
    let i = 0, arr = [], len = text.length
    let timer = setInterval(() => {

@@ -13,6 +13,9 @@ body{
     scroll-behavior: smooth;
     width:100%;
 }
+.blank-container{
+    height:100vh;
+}
 button{
     z-index:995
 }
@@ -47,7 +50,11 @@ button{
 }
 
 
-
+.toggleNight{
+    position:absolute;
+    right:30px;
+    top: 30px;
+}
 #touch{
     z-index:990;
     animation: pulsingText 2s alternate infinite ease-in-out;
@@ -130,6 +137,9 @@ button{
     font-size: 30rem;
     transition:.3s;
     z-index:0;
+}
+.text-actual{
+    text-shadow:.5px .5px lime;
 }
 .opacity-header{
     font-size: 20px;

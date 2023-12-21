@@ -22,7 +22,7 @@
 </head>
 
 <body class="h-full bg-gradient-to-br from-blue-900 via-purple-300 to-pink-300 font-serif container" id="bod">
-
+<button class="toggleNight" onclick="toggleNight()">Toggle</button>
     <!--Gear-background-->
     <div class="gears-container gears-bg gears absolute w-full z-0 pointer-events-none">
         <div class="test mt-40 absolute left-20 opacity-75">
@@ -38,7 +38,7 @@
     </div>
 
     <!--Navigation-->
-    <nav id="nav" class="fixed top-0 left-0 w-full bg-gray-200 z-10 nav-left">
+    <nav id="nav" class="fixed top-0 left-0 w-full bg-gray-200 z-10 nav-left duration-200">
         <ul class="list-container flex justify-center items-center leading-7 h-full">
             <li class="list-item py-6 li1 hover:text-blue-400 hover:bg-white px-20 cursor-pointer duration-300"><a href=""
                 class="resources list-link">resources</a></li>
@@ -53,7 +53,7 @@
         </ul>
     </nav>
     <!--------------------------------------------------------------->
-
+    
     <button onclick="navFn()" id="btn-pressID"
         class="btn-press px-10 py-4 bg-gray-400 hover:text-white hidden left-0">Press
         Me</button>
@@ -179,7 +179,7 @@
     
 
 <!--------------------------------------------------------------->
-    <section class="blank-container h-screen w-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-900 flex flex-col justify-center items-center">
+    <section class="blank-container w-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-900 flex flex-col justify-center items-center">
         <!--Indicator to scroll up-->
     <div class="scroll-down-container2 opacity-1 duration-300">
         <span class="material-symbols-outlined down-arrow2 rotate2 text-gray-500" onClick="scrollUpFn()">
