@@ -72,14 +72,14 @@ function scrollTextToCenter(){
 
    })
 // When scrollY meets bottom of page, directives/icons appear
-   if(window.scrollY >= ((section.getBoundingClientRect().y+section.getBoundingClientRect().height))){
+   if(window.scrollY > ((section.getBoundingClientRect().y+section.getBoundingClientRect().height)-20)){
       directives.forEach((dir,i)=>{
          let icon = dir.children[0]
          let textActual = dir.children[1]
          if(icon.classList.contains('fa-gone')){
             setTimeout(()=>{
              //timeout set to appaer after each index
-               icon.classList.remove('fa-gone')
+               icon.classList.remove('fa-gone') 
                icon.classList.add('fa-appear')
                autoTextFn(myText[i],textActual)
          },800*(i))
@@ -96,7 +96,6 @@ function scrollTextToCenter(){
          let icon = dir.children[0]
          let textActual = dir.children[1]
          if(icon.classList.contains('fa-appear')){
-            //timeout set to disappear after each index
             icon.classList.add('fa-gone')
             icon.classList.remove('fa-appear')
             textActual.textContent = ''
@@ -160,7 +159,7 @@ function autoTextFn(text, element) {
          clearInterval(timer)
          hiPointer()
       }//clearInterval once both lengths are the same.
-   }, 50)
+   }, 75)
 }
 //Floating heading that reflects the current nav-list-item
 let float = () => {
@@ -390,6 +389,9 @@ winTypes.forEach(type=>{
 let sizer = document.querySelector('.resize-txt')
 window.addEventListener('resize',e=>{
    sizer.textContent = e.target.innerWidth
+   if(e.innerWidth > 750){
+      nav_container.classList.remove('duration-300')
+   }
 })
 //helper function to press nav-list-item - adding classlist to list-item
 function pressed(li) {
@@ -455,6 +457,7 @@ function navFn() {
    let animation = document.getElementById('btn-pressID')
    if (nav_container.classList.contains('nav-left')) {
       nav_container.classList.toggle('nav-center')
+      nav_container.classList.add('duration-300')
       animation.style.animation = "none";
       animation.style.left = 0;
       bannerAppear();
