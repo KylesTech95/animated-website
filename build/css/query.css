@@ -251,13 +251,28 @@ transition:.3s;
 box-shadow: 0 0 1rem .25px #333;
 }
 #nav{
-    opacity: .85;  
+    opacity: .85; 
+}
+.orig-background{
+    background-color: rgba(229, 231, 235,1);
+    color:#000;
+
+}
+.bg-black-ks{
+    background-color:#000;
+    color:#fff;
 }
 .wh{
     font-size:3rem;
 }
 #nav>ul>li{
     transition:10;
+}
+.orig-hover:hover{
+background:#fff;
+}
+.toggle-hover:hover{
+     background-color: rgba(55, 65, 81,1);
 }
 .pressed{
     box-shadow:inset 5px 5px 6px .25px #333;
@@ -380,7 +395,6 @@ box-shadow: 0 0 1rem .25px #333;
     }
    
     .btn-press{
-        border:2px solid indigo;
         display: block;
         position: fixed;
         top:0;

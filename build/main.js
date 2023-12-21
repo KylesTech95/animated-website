@@ -11,7 +11,7 @@ let gears = document.querySelectorAll('span')
 let touchContainer = document.getElementById('touch')
 let nav_container = document.querySelector('#nav')
 let tailwind_left = 5
-let react_right = body.clientWidth - 5
+let react_right = togBtn.getBoundingClientRect().x+togBtn.getBoundingClientRect().width
 let wh_all = document.querySelectorAll('.wh')
 let section1 = document.querySelector('.flex-control')
 let preview = document.getElementById('preview')
@@ -45,11 +45,9 @@ $(document).ready(function() {
   scrollTo(0,0);
 })
 function toggleNight(){
-   nav_container.classList.toggle('bg-black')
-   nav_container.classList.toggle('text-white')
+   nav_container.classList.toggle('bg-black-ks')
    nav_arr.forEach(li=>{
-      li.classList.toggle('hover:bg-gray-700')
-      
+      li.classList.toggle('toggle-hover')
    })
 
 }
@@ -356,7 +354,6 @@ function winMoveFn(type){
       let animation = document.getElementById('btn-pressID')
       animation_x_pos = animation.getBoundingClientRect().x
       if((mymouse.x < animation_x_pos+25 || mymouse.x > side.right) && body.clientWidth <= 750 && nav_container.classList.contains('nav-center')){
-         console.log(nav_container.classList)
             nav_container.classList.remove('nav-center')
             animation.style = "animation:peek 1s ease-in-out infinite alternate";
             animation.style.left = `-125px`;
