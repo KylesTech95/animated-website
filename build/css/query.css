@@ -291,7 +291,9 @@ box-shadow: 0 0 1rem .25px #333;
         transform: translate(0,-125px)
     }
     
-   
+    /* #nav>ul>li{
+        padding: 1rem 2rem;
+    } */
    
     .list-container>li>a{
         letter-spacing: .5px;
@@ -368,7 +370,7 @@ box-shadow: 0 0 1rem .25px #333;
     }
    
     .btn-press{
-
+        border:2px solid indigo;
         display: block;
         position: fixed;
         top:0;

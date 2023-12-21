@@ -72,7 +72,7 @@ function scrollTextToCenter(){
 
    })
 // When scrollY meets bottom of page, directives/icons appear
-   if(window.scrollY > ((section.getBoundingClientRect().y+section.getBoundingClientRect().height)-20)){
+   if(window.scrollY >= (body.clientHeight/2)){
       directives.forEach((dir,i)=>{
          let icon = dir.children[0]
          let textActual = dir.children[1]
